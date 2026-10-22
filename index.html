@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F1E1C'/%3E%3Cpath d='M9 22c3-2 4-6 7-6s4 4 7 6' stroke='%23F6F4F0' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&display=swap">
 <style id="tokens">
 :root{
   color-scheme: light;
@@ -329,7 +329,7 @@ legend{font-size:17px;font-weight:600;margin-bottom:16px;padding:0}
 .sns{display:grid;gap:8px}
 .sns button{height:48px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--card);font-weight:600;font-size:14px}
 .sns .kakao{background:#FEE500;border-color:#FEE500;color:#191600}
-.sns .naver{background:#03A94D;border-color:#03A94D;color:#fff}
+.sns .naver{background:#017D3C;border-color:#017D3C;color:#fff}
 .help{display:flex;justify-content:center;gap:16px;font-size:13px;margin-top:16px}
 .help a{color:var(--mut);min-height:44px;display:inline-flex;align-items:center}
 
@@ -668,6 +668,181 @@ html.rv-on .rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic
 html.rv-on .rv.in{opacity:1;transform:none}
 html.rv-on .temp:not(.in) .ln{stroke-dashoffset:2400}
 @media (prefers-reduced-motion:reduce){ html.rv-on .rv{opacity:1;transform:none;transition:none} html.rv-on .temp .ln{stroke-dashoffset:0} }
+
+/* ===================== 4차 디자인: 밝고 차분하게, 사진 카드 위주 =====================
+   참고: 의뢰인 인테리어 쇼핑 시안 — 따뜻한 크림 바탕, 흰 카드, 큰 사진 첫 화면, 알약 분류 탭, 둥근 사진 카드, 작은 검정 알약 버튼, 흰/연베이지 띠 */
+:root{
+  --bg:#F7F4EE; --card:#FFFFFF; --beige:#EFE8DC; --soft:#ECE6DC; --line:#E1DACE;
+  --ink:#1C1B19; --ink-2:#3A3733; --mut:#5C5850; --mut-2:#726D65; --stone:#8A847B;
+  --char:#1C1B19; --char-2:#2A2825;
+  --point:#ECE6DC; --point-ink:#2A2825; --info:#2A2825; --info-bg:#ECE6DC; --info-dot:#1C1B19;
+  --neu:#3A3733; --neu-bg:#ECE6DC; --neu-dot:#726D65;
+  --disp:"Fraunces",Georgia,"Times New Roman",serif;
+  --r4:22px;
+}
+body{background:var(--bg)}
+.hd{background:rgba(247,244,238,.94)}
+.logo{font-family:var(--disp);font-stretch:normal;font-weight:600;letter-spacing:.08em;font-size:20px}
+.btn{height:44px;padding:0 20px;font-size:14px}
+.btn.sm{height:40px;padding:0 18px;font-size:13px;font-weight:600}
+.btn.light{background:#fff;border-color:#fff;color:var(--ink)}
+.btn.light:hover{background:#F1ECE4}
+.btn.ghost{background:rgba(0,0,0,.18);color:#fff;border-color:rgba(255,255,255,.8)}
+.btn.block{height:52px;font-size:16px}
+
+/* 첫 화면: 화면 폭 사진, 글씨는 아래 왼쪽에 조금만 (어두운 덧칠 위) */
+.hero4{position:relative;margin:8px 8px 0;border-radius:var(--r4);overflow:hidden;background:#3a3f40;color:#fff;height:calc(100svh - 370px);min-height:420px;max-height:860px;isolation:isolate}
+.h4img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:saturate(.9);z-index:-2}
+.hero4::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(14,13,11,.8) 0%,rgba(14,13,11,.58) 34%,rgba(14,13,11,0) 64%)}
+.h4body{position:absolute;left:0;right:0;bottom:0;padding:0 20px 24px}
+.hero4 h1{margin:0 0 18px;font-size:30px;font-weight:700;line-height:1.2;letter-spacing:-.035em;text-shadow:0 1px 12px rgba(0,0,0,.25)}
+.h4body .row{display:flex;flex-wrap:wrap;gap:8px}
+.h4strip{display:grid;gap:12px;padding-top:12px}
+.h4pick{display:flex;align-items:center;gap:12px;padding:8px 10px 8px 8px;border-radius:18px;background:var(--card);text-decoration:none;color:inherit}
+.h4pick img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex:none}
+.h4pick > span:first-of-type{display:grid;gap:1px;flex:1;min-width:0}
+.h4pick small{font-size:12px;color:var(--mut)}
+.h4pick b{font-size:15px;font-weight:600}
+.h4pick em{font-style:normal;font-size:14px;font-weight:700}
+.hero-info4{display:flex;flex-direction:column;gap:2px;margin:0;padding:0 4px;font-size:13px;color:var(--mut)}
+@media (min-width:768px){ .h4strip{grid-template-columns:minmax(300px,360px) 1fr;align-items:center;gap:32px;padding-top:16px} .hero-info4{align-items:flex-end;text-align:right} }
+@media (min-width:768px){
+  .hero4{margin:12px 16px 0;height:calc(100svh - 300px);min-height:520px}
+  .h4img{object-position:50% 42%}
+  .h4body{padding:0 40px 40px}
+  .hero4 h1{font-size:44px}
+}
+@media (min-width:1200px){ .h4body{padding:0 56px 48px} .hero4 h1{font-size:52px;line-height:1.14} }
+
+/* 띠: 크림 / 흰 / 연베이지 번갈아 */
+.band{padding:64px 0}
+.band.white{background:var(--card)}
+.band.beige{background:var(--beige)}
+.hero-info4 + .band, .wrap + .band{margin-top:40px}
+@media (min-width:1024px){ .band{padding:112px 0} .wrap + .band{margin-top:64px} }
+.head4{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin-bottom:28px}
+.t4{margin:0;font-size:26px;font-weight:700;letter-spacing:-.035em;line-height:1.25}
+.note4{margin:0;font-size:14px;color:var(--mut)}
+@media (min-width:1024px){ .t4{font-size:40px} .head4{margin-bottom:40px} }
+
+/* 분류 알약 탭 (선택된 것만 검정) */
+.tabs4{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gut)*-1) 24px;padding:2px var(--gut)}
+.tabs4::-webkit-scrollbar{display:none}
+.tabs4 button{flex:none;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--r-pill);border:1px solid var(--line);background:var(--bg);font-size:14px;font-weight:600;color:var(--ink)}
+.tabs4 button:has(.ti){padding-left:6px}
+.tabs4 button:hover{border-color:var(--ink)}
+.tabs4 button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tabs4 .ti{width:32px;height:32px;border-radius:50%;overflow:hidden;background:#fff;display:grid;place-items:center;color:var(--ink)}
+.tabs4 .ti img{width:100%;height:100%;object-fit:cover}
+.tabs4 .ti.dark{background:var(--ink);color:#fff}
+.tabs4 button[aria-pressed="true"] .ti.dark{background:#fff;color:var(--ink)}
+@media (min-width:1024px){ .tabs4{margin:0 0 32px;padding:2px 0} }
+
+/* 사진 카드 그리드: 큰 칸 하나 + 작은 칸 */
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px}
+.p4{display:flex;flex-direction:column;text-decoration:none;color:inherit;min-width:0}
+.p4img{position:relative;display:block;aspect-ratio:4/5;border-radius:var(--r4);overflow:hidden;background:var(--soft)}
+.p4img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.p4:hover .p4img img{transform:scale(1.03)}
+.p4img .chip{position:absolute;left:12px;top:12px}
+.p4img .ph{border-radius:0}
+.p4m{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 4px 0}
+.p4m > span:first-child{display:grid;gap:2px;min-width:0}
+.p4m b{font-size:15px;font-weight:600}
+.p4m em{font-style:normal;font-size:14px;font-weight:600;color:var(--ink-2)}
+.p4m s{color:var(--mut-2);font-weight:400;font-size:13px;margin-left:6px}
+.p4.soldout .p4img img{opacity:.6}
+.p4.feat{grid-column:span 2}
+.p4.feat .p4img{aspect-ratio:4/3}
+.p4.feat b{font-size:17px}
+.empty4{padding:40px 0;display:grid;justify-items:start;gap:12px;color:var(--mut)}
+.empty4 p{margin:0}
+.empty4[hidden]{display:none}
+.p4img .chip.ok{background:var(--ink);color:#fff}.p4img .chip.ok::before{background:#fff}
+@media (min-width:1024px){
+  .grid4{grid-template-columns:repeat(4,1fr);gap:32px 24px}
+  .p4:not(.feat) .p4img{aspect-ratio:1}
+  .p4.feat{grid-column:span 2;grid-row:span 2}
+  .p4.feat .p4img{aspect-ratio:auto;flex:1;min-height:0}
+  .p4.feat .p4img img{position:absolute;inset:0}
+  .p4.feat b{font-size:20px}
+}
+
+/* 소개 */
+.i4grid{display:grid;gap:40px}
+.i4big{margin:0;font-size:24px;font-weight:700;line-height:1.38;letter-spacing:-.035em;color:var(--ink)}
+.i4big span{color:var(--stone)}
+.i4sub{margin:20px 0 24px;color:var(--mut);font-size:15px;max-width:30em}
+.i4pics{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.i4pics img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r4);filter:saturate(.9)}
+.i4pics img + img{margin-top:40px}
+@media (min-width:1024px){ .i4grid{grid-template-columns:6fr 6fr;gap:80px;align-items:center} .i4big{font-size:34px} .i4pics{gap:20px} .i4pics img + img{margin-top:72px} }
+
+/* 한 번의 순환: 연베이지 띠 */
+.rit4 .temp{margin:0 0 40px}
+.rit4 .temp .base{stroke:#BDB4A6}
+.rit4 .temp .area{fill:rgba(28,27,25,.05)}
+.rit4 .temp .ln{stroke:var(--ink)}
+.rit4 .temp circle{fill:var(--beige);stroke:var(--ink)}
+.rit4 .tl{color:var(--mut)}
+.rit4 .tl b{font-family:var(--disp);font-stretch:normal;font-weight:500;color:var(--ink)}
+.rit4 .ticks{color:var(--mut)}
+.r4cols{display:grid;gap:12px}
+.r4cols > div{background:var(--card);border-radius:var(--r4);padding:22px 22px 24px;display:grid;grid-template-columns:96px 1fr;column-gap:16px;align-items:baseline}
+.rit4 .bign{grid-row:span 2;margin:0;font-family:var(--disp);font-stretch:normal;font-size:44px;font-weight:500;line-height:1;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+.rit4 .bign small{font-family:var(--font);font-size:14px;font-weight:600;margin-left:4px;color:var(--mut);letter-spacing:0}
+.r4cols h3{font-size:17px;font-weight:700}
+.r4cols p:not(.bign){margin:4px 0 0;font-size:14px;color:var(--mut)}
+@media (min-width:768px){ .r4cols{grid-template-columns:repeat(3,1fr);gap:20px} .r4cols > div{display:block;padding:28px 28px 30px} .rit4 .bign{font-size:72px;margin-bottom:20px} .rit4 .tl b{font-size:28px} }
+
+/* 샵 / 공간 사진 카드 한 쌍 */
+.pair4{display:grid;gap:20px}
+.card4{display:block;text-decoration:none;color:inherit}
+.c4img{display:block;aspect-ratio:4/3;border-radius:var(--r4);overflow:hidden;background:var(--soft)}
+.c4img img{width:100%;height:100%;object-fit:cover;filter:saturate(.88);transition:transform .6s}
+.card4:hover .c4img img{transform:scale(1.03)}
+.c4t{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 4px 0}
+.c4t > span:first-child{display:grid;gap:2px}
+.c4t b{font-size:22px;font-weight:700;letter-spacing:-.03em}
+.c4t small{font-size:14px;color:var(--mut)}
+@media (min-width:768px){ .pair4{grid-template-columns:1fr 1fr;gap:24px} .c4t b{font-size:28px} }
+
+/* 공간 미리보기, 저널 */
+.band .space-tease .pic .photo{filter:saturate(.9)}
+.facts{border-top-color:#D3CABC}.facts div{border-bottom-color:#D3CABC}
+.facts dt{color:var(--mut)}
+.journal4{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gut)*-1);padding:0 var(--gut) 4px;scrollbar-width:none}
+.journal4::-webkit-scrollbar{display:none}
+.journal4 a{scroll-snap-align:start;display:grid;gap:6px;align-content:start;text-decoration:none;color:inherit;background:var(--card);border-radius:var(--r4);padding:10px 10px 20px}
+.j4img{display:block;aspect-ratio:4/3;border-radius:16px;overflow:hidden;margin-bottom:8px}
+.j4img img{width:100%;height:100%;object-fit:cover;filter:saturate(.88);transition:transform .6s}
+.journal4 a:hover .j4img img{transform:scale(1.03)}
+.journal4 a > *:not(.j4img){padding:0 8px}
+.j4w{font-size:13px;color:var(--mut)}
+.journal4 b{font-size:17px;font-weight:700;letter-spacing:-.02em}
+.j4d{font-size:14px;color:var(--mut)}
+@media (min-width:1024px){ .journal4{grid-auto-flow:row;grid-template-columns:repeat(2,1fr);overflow:visible;margin:0;padding:0;gap:24px} .journal4 .j4img{aspect-ratio:16/9} }
+
+/* 다른 화면: 사진 원래 색(채도만 살짝), 카드 흰색 */
+.ph-hero img,.split .pic .photo,.fac .fimg img,.dlg .pimg img,.journal .jimg img,.space-tease .pic .photo{filter:saturate(.9)}
+.journal a:hover .jimg img{filter:saturate(1)}
+.prod{background:var(--card);border-radius:var(--r4)}
+.prod .pimg{border-radius:16px}
+.nav a[aria-current="page"]{background:var(--ink);color:#fff}
+.prod .chip.ok{background:var(--ink);color:#fff}
+.cats button{background:var(--card);font-weight:600}
+.ph-hero,.hero{border-radius:var(--r4)}
+
+/* 바닥: 얇은 검정 */
+.ft{background:var(--char);color:#C9C3B8;padding:28px 0 calc(24px + env(safe-area-inset-bottom));overflow:visible}
+.ft .logo{color:#F7F4EE;font-size:18px}
+.ft .logo small{color:#B9B2A6}
+.ft4{display:grid;gap:12px;align-items:center}
+.ft4biz{margin:0;font-size:12px;line-height:1.6;color:#C9C3B8}
+.ft4nav{display:flex;flex-wrap:wrap;gap:0 16px;list-style:none;margin:0;padding:0}
+.ft4nav a{color:#EDE8DF;font-size:13px;min-height:36px}
+.ft .credit{margin-top:12px;padding-top:12px;border-top:1px solid #3A3733;color:#B9B2A6;font-size:12px}
+@media (min-width:1024px){ .ft4{grid-template-columns:auto 1fr auto;gap:32px} }
 </style>
 </head>
 <body class="no-im">
@@ -745,58 +920,67 @@ html.rv-on .temp:not(.in) .ln{stroke-dashoffset:2400}
 <main>
 <!-- ============ 1 메인 ============ -->
 <section class="page" id="p-home" data-page="home" aria-label="메인">
-  <div class="hero3">
-    <p class="im on-photo">섹션 배경 이미지(흑백으로 보정해서 올림) + 텍스트·버튼 위젯. 모바일용 사진은 따로 지정</p>
-    <img class="h3img" src="https://images.unsplash.com/photo-1769011496342-2bd1ad232d8f?w=2000&q=72&auto=format&fit=crop" alt="김 서린 유리 너머 사우나 벤치에 앉아 쉬는 사람">
-    <i class="cross c1" aria-hidden="true"></i><i class="cross c2" aria-hidden="true"></i>
-    <div class="h3top">
-      <span>Sauna goods &amp; space</span>
-      <span class="h3dot">Seoul — Busan</span>
-    </div>
-    <div class="h3body">
+  <div class="hero4">
+    <p class="im on-photo">섹션 배경 이미지(원래 색, 채도만 살짝 낮춤) + 아래쪽 어두운 그라데이션 덧칠(섹션 배경 오버레이) + 텍스트·버튼 위젯. 모바일용 사진은 따로 지정</p>
+    <img class="h4img" src="https://images.unsplash.com/photo-1604609165678-096d20fab1ad?w=2000&q=72&auto=format&fit=crop" alt="바닷가 바위 위에 선 작은 나무 사우나">
+    <div class="h4body">
       <h1>땀 내고, 식히고,<br>한숨 돌리고.</h1>
-      <p>집에서 쓰는 사우나 타월과 로브, 그리고 부산에 준비 중인 작은 사우나 공간.</p>
       <div class="row">
-        <a class="btn light" href="#space">공간 미리 보기</a>
-        <a class="btn ghost only-int" href="#shop">타월 보러 가기</a>
-        <a class="btn ghost only-ext ext-link" href="#">스토어 가기 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
-      </div>
-    </div>
-    <a class="h3card only-int" href="#product/waffle">
-      <img src="https://images.unsplash.com/photo-1760722974657-f64bce2f9cc5?w=300&q=70&auto=format&fit=crop" alt="">
-      <span><small>새로 나온 타월</small><b>와플 사우나 타월</b><em class="num">38,000원</em></span>
-    </a>
-    <p class="h3word" aria-hidden="true">HANSUM</p>
-  </div>
-  <div class="wrap"><p class="hero-info3"><span>온라인 샵 · 평일 오후 2시 전 주문 당일 출고 (예시)</span><span>부산 공간 · 설계 중</span></p></div>
-
-  <div class="sec intro3">
-    <div class="wrap">
-      <p class="im">왼쪽 텍스트 위젯(두 가지 글자색) + 오른쪽 이미지 위젯. 겹친 사진 두 장과 동그라미는 한 장으로 합쳐 올려요</p>
-      <div class="i3grid">
-        <div class="i3text rv">
-          <p class="eyebrow">한숨에 대해</p>
-          <p class="i3big"><span>뜨거운 방에서 10분, 찬물에서 1분, 그리고 아무것도 하지 않는 10분.</span> 한숨은 그 마지막 10분을 위한 물건과 공간을 만들어요.</p>
-          <div class="i3sub">
-            <p>2025년 서울에서 타월 한 장으로 시작했어요. 몸에 닿는 천과 쉬는 자리의 온도를 오래 고민해요.</p>
-            <a class="btn line" href="#brand">브랜드 이야기</a>
-          </div>
-        </div>
-        <div class="stack rv">
-          <img class="s1" src="https://images.unsplash.com/photo-1741601274134-fa98352f1c95?w=1100&q=72&auto=format&fit=crop" alt="달군 사우나 돌 위로 국자로 물을 붓는 모습">
-          <img class="s2" src="https://images.unsplash.com/photo-1786799966417-bead801334e7?w=700&q=72&auto=format&fit=crop" alt="사우나 벤치에 걸쳐 둔 격자무늬 타월">
-          <span class="stamp" aria-hidden="true"><b class="num">21</b>분<small>한 번의 순환</small></span>
-        </div>
+        <a class="btn sm light" href="#space">공간 미리 보기</a>
+        <a class="btn sm ghost only-int" href="#shop">샵 둘러보기</a>
+        <a class="btn sm ghost only-ext ext-link" href="#">스토어 가기 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
       </div>
     </div>
   </div>
+  <div class="wrap"><div class="h4strip">
+    <a class="h4pick" href="#product/waffle"><img src="https://images.unsplash.com/photo-1760722974657-f64bce2f9cc5?w=200&q=70&auto=format&fit=crop" alt=""><span><small>새로 나온 타월</small><b>와플 사우나 타월</b><em class="num">38,000원</em></span><span class="btn sm">보기</span></a>
+    <p class="hero-info4"><span>집에서 쓰는 사우나 타월과 로브, 부산에 준비 중인 작은 사우나 공간</span><span>평일 오후 2시 전 주문 당일 출고 (예시)</span></p>
+  </div></div>
 
-  <section class="rit3" aria-labelledby="ritTitle">
+  <section class="band white" aria-labelledby="pickTitle">
     <div class="wrap">
-      <p class="im">섹션 배경색 검정 + 텍스트 위젯 3열. 온도 그래프는 이미지 한 장</p>
-      <div class="r3head rv">
-        <h2 id="ritTitle">한 번의 순환</h2>
-        <p>시간과 온도는 일반적인 예시예요.<br>몸 상태에 맞게 줄여 주세요.</p>
+      <p class="im only-int">쇼핑 위젯(상품 목록, 카테고리 탭 켜기) — 탭 모양·큰 칸 배치가 되는지 확인 필요. 안 되면 탭은 버튼 위젯으로</p>
+      <p class="im only-ext">이미지 + 버튼 위젯. 버튼 링크를 외부 스토어 상품 주소로 연결</p>
+      <div class="head4 rv">
+        <h2 class="t4" id="pickTitle">쉬는 시간에 쓰는 것들</h2>
+        <a class="btn sm only-int" href="#shop">전체 보기</a>
+        <a class="btn sm only-ext ext-link" href="#">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
+      </div>
+      <div class="tabs4 only-int" role="group" aria-label="분류">
+        <button type="button" data-hcat="all" aria-pressed="true">전체</button>
+        <button type="button" data-hcat="towel" aria-pressed="false"><span class="ti"><img src="https://images.unsplash.com/photo-1638232928539-6e91c47ddec5?w=120&q=70&auto=format&fit=crop" alt=""></span>타월</button>
+        <button type="button" data-hcat="robe" aria-pressed="false"><span class="ti"><img src="https://images.unsplash.com/photo-1780571525506-67e3bb9ca947?w=120&q=70&auto=format&fit=crop" alt=""></span>로브</button>
+        <button type="button" data-hcat="hat" aria-pressed="false"><span class="ti ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 14.5 8.6 7.2A1.5 1.5 0 0 1 10.1 6h3.8a1.5 1.5 0 0 1 1.5 1.2l1.1 7.3"/><path d="M3 15.2c1.2 2 16.8 2 18 0-1.6-.9-4.2-1.3-4.5-1.3H7.5c-.3 0-2.9.4-4.5 1.3Z"/></svg></span>모자</button>
+        <button type="button" data-hcat="set" aria-pressed="false"><span class="ti ic dark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11"/><path d="M12 9c-2-3.5-5.5-3.5-5.5-1.5S9.5 9 12 9c2.5 0 5.5 0 5.5-1.5S14 5.5 12 9"/></svg></span>세트</button>
+      </div>
+      <div class="grid4" id="picks"></div>
+      <div class="empty4" id="pickEmpty" hidden><p>세트 상품은 아직 준비 중이에요.</p><a class="btn sm" href="#shop">샵에서 모두 보기</a></div>
+    </div>
+  </section>
+
+  <section class="band" aria-label="한숨에 대해">
+    <div class="wrap">
+      <p class="im">왼쪽 텍스트 위젯(두 가지 글자색) + 오른쪽 이미지 위젯 2개 나란히</p>
+      <div class="i4grid">
+        <div class="rv">
+          <p class="i4big"><span>뜨거운 방에서 10분, 찬물에서 1분, 그리고 아무것도 하지 않는 10분.</span> 한숨은 그 마지막 10분을 위한 물건과 공간을 만들어요.</p>
+          <p class="i4sub">2025년 서울에서 타월 한 장으로 시작했어요. 몸에 닿는 천과 쉬는 자리의 온도를 오래 고민해요.</p>
+          <a class="btn sm" href="#brand">브랜드 이야기</a>
+        </div>
+        <div class="i4pics rv">
+          <img src="https://images.unsplash.com/photo-1741601274134-fa98352f1c95?w=900&q=72&auto=format&fit=crop" alt="달군 사우나 돌 위로 국자로 물을 붓는 모습">
+          <img src="https://images.unsplash.com/photo-1761621711779-faf78317babd?w=900&q=72&auto=format&fit=crop" alt="나무 사우나 앞에 걸린 흰 와플 타월">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band beige rit4" aria-labelledby="ritTitle">
+    <div class="wrap">
+      <p class="im">섹션 배경색 연베이지 + 텍스트 위젯 3열. 온도 그래프는 이미지 한 장</p>
+      <div class="head4 rv">
+        <h2 class="t4" id="ritTitle">한 번의 순환</h2>
+        <p class="note4">시간과 온도는 일반적인 예시예요. 몸 상태에 맞게 줄여 주세요.</p>
       </div>
       <figure class="temp rv" aria-label="순환 동안의 온도 변화 예시: 85도 10분, 15도 1분, 실온 24도 10분">
         <svg viewBox="0 0 1200 190" preserveAspectRatio="none" aria-hidden="true">
@@ -810,74 +994,57 @@ html.rv-on .temp:not(.in) .ln{stroke-dashoffset:2400}
         <div class="tl t3"><b class="num">24°</b>라운지</div>
         <div class="ticks num" aria-hidden="true"><span>0</span><span style="left:47.6%">10</span><span style="left:52.4%">11</span><span style="right:0;left:auto">21분</span></div>
       </figure>
-      <div class="r3cols">
-        <div class="rv"><p class="bign num"><span data-count="10">10</span><small>min</small></p><h3>덥히기</h3><p>80~90도 건식 사우나에서 땀이 날 때까지.</p></div>
-        <div class="rv"><p class="bign num"><span data-count="1">1</span><small>min</small></p><h3>식히기</h3><p>찬물이나 찬 샤워로 숨을 고르며.</p></div>
-        <div class="rv"><p class="bign num"><span data-count="10">10</span><small>min</small></p><h3>쉬기</h3><p>로브를 걸치고, 휴대폰은 내려두고.</p></div>
+      <div class="r4cols">
+        <div class="rv"><p class="bign num"><span data-count="10">10</span><small>분</small></p><h3>덥히기</h3><p>80~90도 건식 사우나에서 땀이 날 때까지.</p></div>
+        <div class="rv"><p class="bign num"><span data-count="1">1</span><small>분</small></p><h3>식히기</h3><p>찬물이나 찬 샤워로 숨을 고르며.</p></div>
+        <div class="rv"><p class="bign num"><span data-count="10">10</span><small>분</small></p><h3>쉬기</h3><p>로브를 걸치고, 휴대폰은 내려두고.</p></div>
       </div>
     </div>
   </section>
 
-  <div class="wrap pair-wrap">
-    <p class="im">이미지 위젯 2개를 1:1 그리드로. 왼쪽 흰 박스, 오른쪽은 흑백 사진 위 글자</p>
-    <div class="pair">
-      <a class="pc light only-int rv" href="#shop"><div class="pc-t"><h2>샵</h2><p>타월 · 로브 · 사우나 햇</p></div><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=900&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"><span class="pc-f">집에서도 사우나처럼</span></a>
-      <a class="pc light only-ext ext-link rv" href="#"><div class="pc-t"><h2>스토어</h2><p>타월 · 로브 · 사우나 햇</p></div><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=900&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"><span class="pc-f">외부 스토어로 이동해요 <svg class="ico ico-s" style="vertical-align:-3px"><use href="#i-ext"/></svg></span></a>
-      <a class="pc dark rv" href="#space"><img src="https://images.unsplash.com/photo-1604609165742-58e1b9cf0457?w=1000&q=72&auto=format&fit=crop" alt="물가 바위 위의 작은 나무 사우나"><div class="pc-t"><h2>공간</h2><p>부산 · 준비 중</p></div><span class="pc-f">설계 단계예요</span></a>
-    </div>
-  </div>
-
-  <div class="sec">
+  <section class="band white" aria-label="샵과 공간">
     <div class="wrap">
-      <p class="im only-int">쇼핑 위젯(상품 목록) — PC는 큰 상품 1 + 작은 상품 4, 모바일은 가로로 넘기기 (배치 가능 여부 확인 필요)</p>
-      <p class="im only-ext">이미지 + 버튼 위젯. 버튼 링크를 외부 스토어 상품 주소로 연결</p>
-      <div class="sec-head">
-        <h2 class="h-lg">쉬는 시간에 쓰는 것들</h2>
-        <a class="tlink only-int" href="#shop">전체 보기</a>
-        <a class="tlink only-ext ext-link" href="#">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
+      <p class="im">이미지 위젯 2개를 1:1 그리드로. 사진 아래 텍스트 + 작은 버튼 위젯</p>
+      <div class="pair4">
+        <a class="card4 only-int rv" href="#shop"><span class="c4img"><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=1000&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"></span><span class="c4t"><span><b>샵</b><small>타월 · 로브 · 사우나 햇</small></span><span class="btn sm">샵 보기</span></span></a>
+        <a class="card4 only-ext ext-link rv" href="#"><span class="c4img"><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=1000&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"></span><span class="c4t"><span><b>스토어</b><small>외부 스토어로 이동해요</small></span><span class="btn sm">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></span></span></a>
+        <a class="card4 rv" href="#space"><span class="c4img"><img src="https://images.unsplash.com/photo-1567110973513-2a239896072e?w=1000&q=72&auto=format&fit=crop" alt="은은한 조명 아래 나무 벤치 위의 사우나 물통" style="object-position:center 96%"></span><span class="c4t"><span><b>공간</b><small>부산 · 설계 단계예요</small></span><span class="btn sm">공간 보기</span></span></a>
       </div>
-      <div class="circles only-int" role="group" aria-label="분류 바로가기">
-        <a href="#shop" data-cat="towel"><span><img src="https://images.unsplash.com/photo-1638232928539-6e91c47ddec5?w=240&q=70&auto=format&fit=crop" alt=""></span>타월</a>
-        <a href="#shop" data-cat="robe"><span><img src="https://images.unsplash.com/photo-1780571525506-67e3bb9ca947?w=240&q=70&auto=format&fit=crop" alt=""></span>로브</a>
-        <a href="#shop" data-cat="hat"><span class="ci-ph" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 14.5 8.6 7.2A1.5 1.5 0 0 1 10.1 6h3.8a1.5 1.5 0 0 1 1.5 1.2l1.1 7.3"/><path d="M3 15.2c1.2 2 16.8 2 18 0-1.6-.9-4.2-1.3-4.5-1.3H7.5c-.3 0-2.9.4-4.5 1.3Z"/></svg></span>모자</a>
-        <a href="#shop" data-cat="set"><span class="ci-ph dark" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11"/><path d="M12 9c-2-3.5-5.5-3.5-5.5-1.5S9.5 9 12 9c2.5 0 5.5 0 5.5-1.5S14 5.5 12 9"/></svg></span>세트</a>
-      </div>
-      <div class="picks" id="picks"></div>
     </div>
-  </div>
+  </section>
 
-  <div class="sec" style="padding-top:0">
+  <section class="band beige" aria-label="부산 공간">
     <div class="wrap">
       <div class="space-tease">
         <div class="pic">
           <p class="im on-photo" style="left:12px">이미지 위젯 (크게) — 공간 사진이 생기면 이 자리만 바꿔요</p>
-          <img class="photo" src="https://images.unsplash.com/photo-1604609165678-096d20fab1ad?w=1400&q=72&auto=format&fit=crop" alt="바닷가 바위 위에 선 작은 나무 사우나">
+          <img class="photo" src="https://images.unsplash.com/photo-1604609165742-58e1b9cf0457?w=1400&q=72&auto=format&fit=crop" alt="물가 바위 위의 작은 나무 사우나">
         </div>
         <div>
           <span class="chip info">부산 · 준비 중</span>
-          <h2 class="h-lg" style="margin-top:16px">바다 쪽으로 창을 낸<br>작은 사우나를 짓고 있어요</h2>
+          <h2 class="t4" style="margin-top:16px">바다 쪽으로 창을 낸<br>작은 사우나를 짓고 있어요</h2>
           <dl class="facts">
             <div><dt>정해진 것</dt><dd>부산, 건식 사우나 · 냉탕 · 휴식 라운지</dd></div>
             <div><dt>정하는 중</dt><dd>정확한 위치, 오픈 시기, 이용 요금</dd></div>
             <div><dt>먼저 받기</dt><dd>공사 기록과 오픈 소식을 메일로 보내요</dd></div>
           </dl>
           <div class="row" style="display:flex;gap:8px 20px;flex-wrap:wrap;align-items:center">
-            <button class="btn" type="button" data-open="notify">오픈 소식 받기</button>
+            <button class="btn sm" type="button" data-open="notify">오픈 소식 받기</button>
             <a class="tlink" href="#space">공간 계획 보기</a>
           </div>
           <p class="im" style="margin-top:16px">'오픈 소식 받기' = 아임웹 입력폼 위젯을 팝업으로 연결 (팝업 방식 확인 필요)</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="sec" style="padding-top:0">
+  <section class="band" aria-labelledby="jTitle">
     <div class="wrap">
-      <p class="im">게시판 위젯(갤러리·리스트형)으로 저널 글 목록. 글은 운영자가 직접 올림</p>
-      <div class="sec-head"><h2 class="h-lg">저널</h2><a class="tlink" href="#brand-journal">모두 보기</a></div>
-      <div class="journal" id="journalHome"></div>
+      <p class="im">게시판 위젯(갤러리형)으로 저널 글 목록. 글은 운영자가 직접 올림</p>
+      <div class="head4"><h2 class="t4" id="jTitle">저널</h2><a class="btn sm line" href="#brand-journal">모두 보기</a></div>
+      <div class="journal4" id="journalHome"></div>
     </div>
-  </div>
+  </section>
 </section>
 
 <!-- ============ 2 브랜드 ============ -->
@@ -1134,22 +1301,22 @@ html.rv-on .temp:not(.in) .ln{stroke-dashoffset:2400}
     <p class="lead">Figma 원본과 함께 이 내용을 한 문서로 드려요. 개발자가 디자인 모드에서 그대로 옮길 수 있게 위젯 이름과 값으로 적어요.</p>
     <h2 class="h-md" style="margin-top:48px">색</h2>
     <div class="sw">
-      <div><i style="background:#EDEBE6;border-bottom:1px solid var(--line)"></i><p>바탕 (종이색)<br><code>#EDEBE6</code></p></div>
-      <div><i style="background:#121211"></i><p>먹색 · 글자·검정 띠<br><code>#121211</code></p></div>
-      <div><i style="background:#FAF9F7;border-bottom:1px solid var(--line)"></i><p>흰 카드<br><code>#FAF9F7</code></p></div>
-      <div><i style="background:#86817A"></i><p>돌색 · 큰 글자 앞부분<br><code>#86817A</code></p></div>
+      <div><i style="background:#F7F4EE;border-bottom:1px solid var(--line)"></i><p>바탕 (크림)<br><code>#F7F4EE</code></p></div>
+      <div><i style="background:#FFFFFF;border-bottom:1px solid var(--line)"></i><p>흰 띠 · 카드<br><code>#FFFFFF</code></p></div>
+      <div><i style="background:#EFE8DC;border-bottom:1px solid var(--line)"></i><p>연베이지 띠<br><code>#EFE8DC</code></p></div>
+      <div><i style="background:#1C1B19"></i><p>먹색 · 글자·작은 버튼·바닥<br><code>#1C1B19</code></p></div>
     </div>
     <h2 class="h-md">글자 크기 (PC / 모바일)</h2>
     <div class="type-scale" style="margin:16px 0 48px">
-      <div><code>워드마크 화면 폭 꽉 / Archivo 넓은 폭 600</code><span style="font-family:var(--disp);font-stretch:125%;font-size:30px;font-weight:600">HANSUM</span></div>
-      <div><code>첫 화면 제목 76 / 38</code><span style="font-size:36px;font-weight:700;letter-spacing:-.045em">한숨 돌리고.</span></div>
-      <div><code>큰 숫자 112 / 52 (Archivo)</code><span style="font-family:var(--disp);font-stretch:125%;font-size:36px;font-weight:600">10<small style="font-size:13px"> min</small></span></div>
-      <div><code>구역 제목 56·52 / 32·28</code><span style="font-size:28px;font-weight:700;letter-spacing:-.04em">쉬는 시간에 쓰는 것들</span></div>
-      <div><code>소개 큰 글 48 / 28 (두 가지 색)</code><span style="font-size:22px;font-weight:700;letter-spacing:-.04em"><span style="color:#86817A">찬물에서 1분,</span> 그리고 쉬기</span></div>
+      <div><code>로고 20 / Fraunces 600</code><span style="font-family:var(--disp);font-size:24px;font-weight:600;letter-spacing:.08em">HANSUM</span></div>
+      <div><code>첫 화면 제목 52 / 30</code><span style="font-size:30px;font-weight:700;letter-spacing:-.035em">한숨 돌리고.</span></div>
+      <div><code>구역 제목 40 / 26</code><span style="font-size:26px;font-weight:700;letter-spacing:-.035em">쉬는 시간에 쓰는 것들</span></div>
+      <div><code>소개 큰 글 34 / 24 (두 가지 색)</code><span style="font-size:22px;font-weight:700;letter-spacing:-.035em"><span style="color:#8A847B">찬물에서 1분,</span> 그리고 쉬기</span></div>
+      <div><code>큰 숫자 72 / 44 (Fraunces)</code><span style="font-family:var(--disp);font-size:36px;font-weight:500">10<small style="font-family:var(--font);font-size:13px"> 분</small></span></div>
       <div><code>본문 17 / 15</code><span style="font-size:17px">바다 가까운 골목에 사우나 두 칸</span></div>
-      <div><code>보조 13 / 12</code><span style="font-size:13px" class="mut">시간과 온도는 일반적인 예시예요</span></div>
+      <div><code>보조 13~14 (#5C5850)</code><span style="font-size:13px" class="mut">시간과 온도는 일반적인 예시예요</span></div>
     </div>
-    <p class="small mut" style="margin:-32px 0 48px">모서리: 큰 구역 28 / 카드 24 / 사진 16~20 / 버튼 알약. 사진은 흑백(대비 조금 올림)으로 보정해서 올리고, 상품 사진만 원래 색. Archivo는 Google Fonts 글꼴이라 아임웹에서 웹폰트로 넣거나, 워드마크·큰 숫자만 이미지로 올려요 (방법 확인 필요).</p>
+    <p class="small mut" style="margin:-32px 0 48px">모서리: 사진 카드 22 / 작은 사진 16 / 버튼·분류 탭 알약. 사진은 원래 색으로 채도만 조금 낮춰 보정해서 올려요. 첫 화면은 사진 아래쪽에 어두운 그라데이션을 깔아 흰 글씨 대비를 4.5:1 이상으로 맞춰요. Fraunces는 Google Fonts 글꼴이라 아임웹 웹폰트로 넣거나, 로고·큰 숫자만 이미지로 올려요 (방법 확인 필요).</p>
     <h2 class="h-md" style="margin-bottom:16px">화면별 구현 방법</h2>
     <table class="map">
       <thead><tr><th>화면</th><th>아임웹에서 만드는 방법</th><th>확인할 것</th></tr></thead>
@@ -1169,20 +1336,14 @@ html.rv-on .temp:not(.in) .ln{stroke-dashoffset:2400}
 
 <footer class="ft">
   <div class="wrap">
-    <span class="logo">HANSUM <small style="color:#A9A398">한숨</small></span>
-    <div class="cols">
-      <div>
-        <p>상호 (예시) · 대표 (예시) · 사업자등록번호 000-00-00000</p>
-        <p>통신판매업 신고 (예시) · 서울 송파구 (예시)</p>
-        <p>고객센터 평일 10:00–17:00</p>
-        <p class="im" style="margin-top:8px">아임웹 '하단 디자인'에 사업자 정보 입력</p>
-      </div>
-      <ul><li><a href="#brand">브랜드</a></li><li><a href="#space">공간</a></li><li><a href="#brand-journal">저널</a></li><li class="only-int"><a href="#shop">샵</a></li></ul>
-      <ul><li><a href="#login" class="only-int">로그인</a></li><li><a href="#my" class="only-int">주문 조회</a></li><li><a href="#handoff">인계 자료 예시</a></li></ul>
+    <div class="ft4">
+      <span class="logo">HANSUM <small>한숨</small></span>
+      <p class="ft4biz">상호 (예시) · 대표 (예시) · 사업자등록번호 000-00-00000 · 통신판매업 신고 (예시) · 서울 송파구 (예시) · 고객센터 평일 10:00–17:00</p>
+      <ul class="ft4nav"><li><a href="#brand">브랜드</a></li><li><a href="#space">공간</a></li><li><a href="#brand-journal">저널</a></li><li class="only-int"><a href="#shop">샵</a></li><li class="only-int"><a href="#my">주문 조회</a></li><li><a href="#handoff">인계 자료 예시</a></li></ul>
     </div>
-    <p class="credit">사진: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — Clay Banks, HUUM, Auroom Wellness, Atle Mo, Denis Gorbuleac, Polina Kuzovkova, HANVIN CHEONG, Anne Nygård, Taylor Mackenzie, Mads Leif Hansen, Florencia Simonini, MADEINEGYPT.CA, engin akyurt, Grace Anne Bobadilla, Anastase Maragos, Natalia Marcelewicz. 브랜드·상품·가격·후기는 모두 시안용 예시예요.</p>
+    <p class="im" style="margin-top:8px">아임웹 '하단 디자인'에 사업자 정보 입력 (배경 검정, 높이 낮게)</p>
+    <p class="credit">사진: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — Atle Mo, Clay Banks, HUUM, Auroom Wellness, Denis Gorbuleac, Polina Kuzovkova, HANVIN CHEONG, Anne Nygård, Taylor Mackenzie, Mads Leif Hansen, Florencia Simonini, MADEINEGYPT.CA, engin akyurt, Grace Anne Bobadilla, Anastase Maragos, Natalia Marcelewicz. 브랜드·상품·가격·후기는 모두 시안용 예시예요.</p>
   </div>
-  <p class="ft-word" aria-hidden="true">HANSUM</p>
 </footer>
 
 <div class="mbar" id="mbar"><span class="p num" id="mbarP">38,000원</span><button class="btn only-int" type="button" id="mbarBtn">장바구니 담기</button><a class="btn only-ext ext-link" href="#">스토어에서 구매 <svg class="ico ico-s"><use href="#i-ext"/></svg></a></div>
@@ -1236,9 +1397,22 @@ function card(p, feat){
   const chip = p.soldout ? '<span class="chip neu">품절</span>' : (p.badge ? `<span class="chip ${p.badge==='촬영 전'?'neu':'ok'}">${p.badge}</span>` : '');
   return `<a class="prod${feat?' feat':''}${p.soldout?' soldout':''}" href="#product/${p.id}"><div class="pimg">${prodImg(p, feat?1200:700)}${chip}</div><div class="meta"><div><div class="nm">${p.nm}</div><div class="pr num">${p.soldout?'품절':won(p.pr)}${p.was?`<s>${won(p.was)}</s>`:''}</div></div>${feat?'<span class="btn light sm">자세히 보기</span>':''}</div></a>`;
 }
-$('#picks').innerHTML = [P[5],P[0],P[1],P[3],P[2]].map((p,i)=>card(p,i===0)).join('');
+/* 4차: 메인 분류 탭 + 사진 카드 */
+let hcat='all';
+function card4(p, feat){
+  const chip = p.soldout ? '<span class="chip neu">품절</span>' : (p.badge ? `<span class="chip ${p.badge==='촬영 전'?'neu':'ok'}">${p.badge}</span>` : '');
+  return `<a class="p4${feat?' feat':''}${p.soldout?' soldout':''}" href="#product/${p.id}"><span class="p4img">${prodImg(p, feat?1200:700)}${chip}</span><span class="p4m"><span><b>${p.nm}</b><em class="num">${p.soldout?'품절':won(p.pr)}${p.was?`<s>${won(p.was)}</s>`:''}</em></span>${feat?'<span class="btn sm">자세히 보기</span>':''}</span></a>`;
+}
+function renderPicks(){
+  const list = hcat==='all' ? [P[5],P[0],P[1],P[3],P[2]] : P.filter(p=>p.cat===hcat);
+  $('#picks').innerHTML = list.map((p,i)=>card4(p, hcat==='all'&&i===0)).join('');
+  $('#pickEmpty').hidden = list.length>0;
+  $$('[data-hcat]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.hcat===hcat));
+}
+renderPicks();
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-hcat]'); if(b){ hcat=b.dataset.hcat; renderPicks(); } });
 const jrow = j => `<a href="#brand-journal"><div class="jimg"><img class="photo" src="${U(j.img,600)}" alt="" style="object-position:${j.pos||'center'}"></div><div><h3>${j.t}</h3><p>${j.d}</p></div><span class="when">${j.w}</span></a>`;
-$('#journalHome').innerHTML = J.slice(0,2).map(jrow).join('');
+$('#journalHome').innerHTML = J.slice(1).map(j=>`<a href="#brand-journal"><span class="j4img"><img src="${U(j.img,700)}" alt="" style="object-position:${j.pos||'center'}"></span><span class="j4w">${j.w}</span><b>${j.t}</b><span class="j4d">${j.d}</span></a>`).join('');
 $('#journalAll').innerHTML = J.map(jrow).join('');
 $('#fac').innerHTML = FAC.map(f=>`<div><button type="button" data-fac="${f.k}" aria-label="${f.nm} 자세히 보기">${f.img?`<div class="fimg"><img src="${U(f.img,1200)}" alt=""></div>`:`<div class="ph">사진 준비 중</div>`}<span class="chip on-img ${f.img?'info':'neu'}">${f.st}</span><div class="cap"><b>${f.nm}</b><span>자세히 보기</span></div></button></div>`).join('');
 
