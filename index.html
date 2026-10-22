@@ -843,6 +843,43 @@ body{background:var(--bg)}
 .ft4nav a{color:#EDE8DF;font-size:13px;min-height:36px}
 .ft .credit{margin-top:12px;padding-top:12px;border-top:1px solid #3A3733;color:#B9B2A6;font-size:12px}
 @media (min-width:1024px){ .ft4{grid-template-columns:auto 1fr auto;gap:32px} }
+
+/* 최종 검사 (2026-10-22): 글자 단계 8개, 모서리 3단계(12·22·알약), 누름 영역 44, 섹션 여백 */
+.badge{font-size:12px;border-radius:999px}
+.rit4 .ticks{font-size:12px}
+.btn.sm{font-size:14px}
+.btn[aria-busy="true"]{opacity:.7;cursor:progress}
+.hero-info4{font-size:14px}
+.p4m s{font-size:12px}
+.j4w{font-size:12px}
+.ft .logo{font-size:20px}
+.ft4nav a{font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+@media (max-width:767px){ .ft4nav{gap:0} .ft4nav a{min-width:44px;padding:0 10px;justify-content:center} .ft4nav li:first-child a{margin-left:-10px} }
+.hero-info4 span{text-wrap:balance}
+.ft .credit a{display:inline-block;padding:2px 0}
+.h4pick{border-radius:var(--r4)}
+.j4img{border-radius:12px}
+.space-tease .pic,.space-tease .pic .photo{border-radius:var(--r4)}
+.hero4 h1{letter-spacing:-.02em}
+.t4{font-size:24px}
+.c4t b{font-size:24px}
+.rit4 .tl b{font-size:24px}
+.fld input,.fld select{border-color:#8A847B}
+.journal4{scroll-padding-inline:var(--gut)}
+.hd .logo{padding:6px 0}
+@media (max-width:767px){ .btn.sm{height:44px} }
+@media (min-width:768px){ .c4t b{font-size:28px} .rit4 .tl b{font-size:28px} }
+@media (min-width:1024px){
+  .band{padding:120px 0}
+  .t4{font-size:40px}
+  .hero4 h1{line-height:1.18}
+  .i4big{font-size:28px}
+  .p4m b{font-size:17px}
+  .p4.feat b{font-size:20px}
+  .h4pick b{font-size:17px}
+  .i4sub{font-size:17px}
+  .space-tease .tlink{font-size:14px}
+}
 </style>
 </head>
 <body class="no-im">
@@ -933,7 +970,7 @@ body{background:var(--bg)}
     </div>
   </div>
   <div class="wrap"><div class="h4strip">
-    <a class="h4pick" href="#product/waffle"><img src="https://images.unsplash.com/photo-1760722974657-f64bce2f9cc5?w=200&q=70&auto=format&fit=crop" alt=""><span><small>새로 나온 타월</small><b>와플 사우나 타월</b><em class="num">38,000원</em></span><span class="btn sm">보기</span></a>
+    <a class="h4pick" href="#product/waffle"><img src="https://images.unsplash.com/photo-1760722974657-f64bce2f9cc5?w=200&q=70&auto=format&fit=crop" alt=""><span><small>새로 나온 타월</small><b>와플 사우나 타월</b><em class="num">38,000원</em></span><span class="btn sm line">보기</span></a>
     <p class="hero-info4"><span>집에서 쓰는 사우나 타월과 로브, 부산에 준비 중인 작은 사우나 공간</span><span>평일 오후 2시 전 주문 당일 출고 (예시)</span></p>
   </div></div>
 
@@ -943,8 +980,8 @@ body{background:var(--bg)}
       <p class="im only-ext">이미지 + 버튼 위젯. 버튼 링크를 외부 스토어 상품 주소로 연결</p>
       <div class="head4 rv">
         <h2 class="t4" id="pickTitle">쉬는 시간에 쓰는 것들</h2>
-        <a class="btn sm only-int" href="#shop">전체 보기</a>
-        <a class="btn sm only-ext ext-link" href="#">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
+        <a class="btn sm line only-int" href="#shop">전체 보기</a>
+        <a class="btn sm line only-ext ext-link" href="#">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
       </div>
       <div class="tabs4 only-int" role="group" aria-label="분류">
         <button type="button" data-hcat="all" aria-pressed="true">전체</button>
@@ -1008,7 +1045,7 @@ body{background:var(--bg)}
       <div class="pair4">
         <a class="card4 only-int rv" href="#shop"><span class="c4img"><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=1000&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"></span><span class="c4t"><span><b>샵</b><small>타월 · 로브 · 사우나 햇</small></span><span class="btn sm">샵 보기</span></span></a>
         <a class="card4 only-ext ext-link rv" href="#"><span class="c4img"><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=1000&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"></span><span class="c4t"><span><b>스토어</b><small>외부 스토어로 이동해요</small></span><span class="btn sm">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></span></span></a>
-        <a class="card4 rv" href="#space"><span class="c4img"><img src="https://images.unsplash.com/photo-1567110973513-2a239896072e?w=1000&q=72&auto=format&fit=crop" alt="은은한 조명 아래 나무 벤치 위의 사우나 물통" style="object-position:center 96%"></span><span class="c4t"><span><b>공간</b><small>부산 · 설계 단계예요</small></span><span class="btn sm">공간 보기</span></span></a>
+        <a class="card4 rv" href="#space"><span class="c4img"><img src="https://images.unsplash.com/photo-1567110973513-2a239896072e?w=1000&q=72&auto=format&fit=crop" alt="은은한 조명 아래 나무 벤치 위의 사우나 물통" style="object-position:center 96%"></span><span class="c4t"><span><b>공간</b><small>부산 · 설계 단계예요</small></span><span class="btn sm line">공간 보기</span></span></a>
       </div>
     </div>
   </section>
@@ -1338,7 +1375,7 @@ body{background:var(--bg)}
   <div class="wrap">
     <div class="ft4">
       <span class="logo">HANSUM <small>한숨</small></span>
-      <p class="ft4biz">상호 (예시) · 대표 (예시) · 사업자등록번호 000-00-00000 · 통신판매업 신고 (예시) · 서울 송파구 (예시) · 고객센터 평일 10:00–17:00</p>
+      <p class="ft4biz">상호 (예시) · 대표 (예시) · 사업자등록번호 000-00-00000 · 통신판매업 신고 (예시) · 서울 송파구 (예시) · <span style="white-space:nowrap">고객센터 평일 10:00–17:00</span></p>
       <ul class="ft4nav"><li><a href="#brand">브랜드</a></li><li><a href="#space">공간</a></li><li><a href="#brand-journal">저널</a></li><li class="only-int"><a href="#shop">샵</a></li><li class="only-int"><a href="#my">주문 조회</a></li><li><a href="#handoff">인계 자료 예시</a></li></ul>
     </div>
     <p class="im" style="margin-top:8px">아임웹 '하단 디자인'에 사업자 정보 입력 (배경 검정, 높이 낮게)</p>
@@ -1528,7 +1565,7 @@ document.addEventListener('click', e=>{
   if(f){ const x=FAC.find(q=>q.k===f.dataset.fac); openDlg(`${x.img?`<div class="pimg"><img src="${U(x.img,1400)}" alt="${x.nm} 참고 사진"></div>`:`<div class="pimg ph">사진 준비 중 · 설계 도면이 나오면 먼저 올려요</div>`}<span class="chip ${x.img?'info':'neu'}">${x.st}</span><h2 class="h-lg" id="dlgTitle" style="margin:12px 0 8px">${x.nm}</h2><p style="margin:0 0 20px;color:var(--ink-2)">${x.body}</p><dl class="info-tbl">${x.rows.map(r=>`<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl><p class="small mut" style="margin-top:12px">${x.img?'사진은 분위기 참고용 예시예요. 실제 공간 사진으로 바꿔요.':''}</p><p class="im" style="margin-top:8px">팝업 1개 = 이미지 + 텍스트 위젯 묶음. 정보가 바뀌면 이 팝업만 고치면 돼요</p>`); return; }
   const n=e.target.closest('[data-open="notify"]');
   if(n){ openDlg(`<h2 class="h-lg" id="dlgTitle" style="margin:0 0 8px">오픈 소식 받기</h2><p class="mut" style="margin:0 0 20px">공사 기록과 예약 오픈 날짜를 메일로 보내요. 한 달에 한 번 넘지 않아요.</p><form id="nf" novalidate><div class="fld" id="n-mail"><label for="nMail">이메일</label><input id="nMail" type="email" autocomplete="email" placeholder="name@example.com"><span class="err">이메일 형식을 확인해 주세요</span></div><label class="chk"><input type="checkbox" id="nAgree"> 소식 발송을 위한 이메일 수집에 동의해요</label><button class="btn block" type="submit" style="margin-top:8px">신청하기</button></form><p class="im" style="margin-top:16px">아임웹 입력폼 위젯. 제출 알림은 이메일·문자로 받을 수 있어요</p>`);
-    $('#nf').onsubmit=ev=>{ ev.preventDefault(); const ok=mailOk($('#nMail').value); $('#n-mail').classList.toggle('bad',!ok); if(!ok) return; if(!$('#nAgree').checked){ toast('수집 동의에 체크해 주세요'); return; } closeDlg(); toast('신청했어요. 첫 소식은 다음 달에 보내요 (시안)'); };
+    $('#nf').onsubmit=ev=>{ ev.preventDefault(); const ok=mailOk($('#nMail').value); $('#n-mail').classList.toggle('bad',!ok); if(!ok) return; if(!$('#nAgree').checked){ toast('수집 동의에 체크해 주세요'); return; } const sb=$('#nf button[type=submit]'); sb.disabled=true; sb.setAttribute('aria-busy','true'); sb.textContent='보내는 중…'; setTimeout(()=>{ closeDlg(); toast('신청했어요. 첫 소식은 다음 달에 보내요 (시안)'); },700); };
     return; }
   const x=e.target.closest('.ext-link');
   if(x){ e.preventDefault(); closeSheet(); toast('외부 스토어(예: 스마트스토어)로 새 창이 열려요 (시안)'); }
