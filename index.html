@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HANSUM 한숨 — 웰니스 브랜드 사이트 제안 시안</title>
+<meta name="description" content="사우나·휴식 웰니스 브랜드의 아임웹 기반 공식 사이트 제안용 디자인 시안입니다. 가상 브랜드이며 모든 내용은 예시입니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F1E1C'/%3E%3Cpath d='M9 22c3-2 4-6 7-6s4 4 7 6' stroke='%23F6F4F0' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style id="tokens">
+:root{
+  color-scheme: light;
+  /* 브랜드: 따뜻한 회백색 + 먹색 + 포인트 하나(김 서린 하늘색) */
+  --bg:#F6F4F0;      /* 페이지 바탕 */
+  --card:#FFFFFF;
+  --soft:#EFECE6;    /* 연한 칸, 사진 자리 */
+  --line:#E2DED6;
+  --ink:#1F1E1C;     /* 글자·주요 버튼 */
+  --ink-2:#4A4743;
+  --mut:#6B675F;     /* 설명 글자 (#F6F4F0 위 5.1:1) */
+  --mut-2:#A39E95;   /* 비활성 전용 */
+  --point:#DCE6EA;   /* 포인트 바탕 */
+  --point-ink:#2E4651;/* 포인트 위 글자 (7.8:1) */
+  --ok:#1F6B47; --ok-bg:#E3F1E8; --ok-dot:#2F9A68;
+  --warn:#7A5600; --warn-bg:#FBF0D6; --warn-dot:#E0A21B;
+  --info:#2E4651; --info-bg:#DCE6EA; --info-dot:#4F7685;
+  --neu:#4A4743; --neu-bg:#ECE9E3; --neu-dot:#8C877E;
+  --bad:#B42B2B;
+  --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r-img:4px; --r-sm:8px; --r-md:12px; --r-lg:20px; --r-xl:28px; --r-pill:999px;
+  --sh-pop:0 2px 6px rgba(31,30,28,.06),0 16px 40px rgba(31,30,28,.14);
+  --gut:16px; --container:1200px;
+}
+@media (min-width:768px){ :root{ --gut:32px; } }
+@media (min-width:1200px){ :root{ --gut:48px; } }
+</style>
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.6;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gut)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-s{width:16px;height:16px}
+
+/* ---------- 시안 안내 띠 ---------- */
+.demo{background:#2B2A27;color:#EDEAE4;font-size:13px}
+.demo .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:8px;padding-bottom:8px}
+.demo b{font-weight:600;color:#fff}
+.demo .lab{flex:1 1 220px;line-height:1.45}
+.demo .ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:inline-flex;background:#3A3935;border-radius:var(--r-pill);padding:3px}
+.seg button{border:0;background:transparent;color:#CFCAC1;height:36px;padding:0 14px;border-radius:var(--r-pill);font-size:13px;font-weight:500;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:#F6F4F0;color:var(--ink)}
+.demo select,.demo .tgl{height:42px;border-radius:var(--r-pill);border:1px solid #4A4844;background:#2B2A27;color:#EDEAE4;padding:0 14px;font-size:13px}
+.demo .tgl[aria-pressed="false"]{color:#A9A398}
+@media (max-width:767px){ .demo .ctl{width:100%} .demo .seg{flex:1 1 100%} .seg button{flex:1} .demo select,.demo .tgl{flex:1 1 0;min-width:0} }
+
+/* ---------- 아임웹 구현 메모 ---------- */
+.im{display:inline-flex;align-items:flex-start;gap:6px;margin:0 0 12px;padding:6px 10px;border:1px dashed #9A958B;border-radius:var(--r-sm);background:rgba(255,255,255,.86);color:#4A4743;font:500 12px/1.45 var(--font);max-width:100%}
+.im::before{content:"아임웹";flex:none;font-weight:700;color:var(--point-ink);background:var(--point);border-radius:4px;padding:0 5px}
+.im.on-photo{position:absolute;top:12px;left:var(--gut);z-index:2;margin:0}
+body.no-im .im{display:none}
+
+/* ---------- 머리 ---------- */
+.hd{position:sticky;top:0;z-index:40;background:rgba(246,244,240,.96);border-bottom:1px solid var(--line)}
+.hd .wrap{display:flex;align-items:center;height:60px;gap:8px}
+.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none;font-weight:700;letter-spacing:.14em;font-size:17px}
+.logo small{font-size:12px;font-weight:500;letter-spacing:0;color:var(--mut)}
+.nav{display:none;gap:4px;margin-left:40px}
+.nav a{display:inline-flex;align-items:center;gap:4px;height:44px;padding:0 14px;border-radius:var(--r-pill);text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-2)}
+.nav a:hover{background:var(--soft)}
+.nav a[aria-current="page"]{color:var(--ink);font-weight:600}
+.hd .act{margin-left:auto;display:flex;gap:2px;align-items:center}
+.icon-btn{position:relative;display:inline-grid;place-items:center;width:44px;height:44px;border:0;border-radius:var(--r-pill);background:transparent;text-decoration:none}
+.icon-btn:hover{background:var(--soft)}
+.badge{position:absolute;top:6px;right:4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--ink);color:#fff;font-size:11px;font-weight:600;line-height:18px;text-align:center}
+.only-int{}
+body.ext .only-int{display:none!important}
+body:not(.ext) .only-ext{display:none!important}
+@media (min-width:1024px){ .nav{display:flex} .menu-btn{display:none} }
+
+/* 모바일 메뉴 */
+.sheet{position:fixed;inset:0;z-index:60;background:var(--bg);display:none;flex-direction:column}
+.sheet.open{display:flex}
+.sheet .top{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 var(--gut);border-bottom:1px solid var(--line)}
+.sheet nav{padding:16px var(--gut);display:flex;flex-direction:column}
+.sheet nav a{display:flex;align-items:center;justify-content:space-between;min-height:60px;border-bottom:1px solid var(--line);text-decoration:none;font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sheet .sub{padding:16px var(--gut);display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- 공통 ---------- */
+.page{display:none}
+.page.on{display:block}
+.sec{padding:64px 0}
+@media (min-width:1024px){ .sec{padding:112px 0} }
+h1,h2,h3{margin:0;letter-spacing:-.025em;line-height:1.28}
+.h-xl{font-size:32px;font-weight:700}
+.h-lg{font-size:24px;font-weight:700}
+.h-md{font-size:20px;font-weight:600}
+@media (min-width:1024px){ .h-xl{font-size:52px;line-height:1.2} .h-lg{font-size:32px} }
+.lead{font-size:17px;color:var(--ink-2);margin:16px 0 0;max-width:38em}
+.mut{color:var(--mut)}
+.small{font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;border-radius:var(--r-pill);border:1px solid var(--ink);background:var(--ink);color:#fff;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .15s}
+.btn:hover{background:#3A3834}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{background:var(--soft);border-color:var(--soft);color:var(--mut-2);cursor:not-allowed}
+.btn.line{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.line:hover{border-color:var(--ink)}
+.btn.light{background:#F6F4F0;border-color:#F6F4F0;color:var(--ink)}
+.btn.block{width:100%;height:52px;font-size:17px;border-radius:var(--r-md)}
+.tlink{display:inline-flex;align-items:center;gap:4px;min-height:44px;font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:var(--r-pill);font-size:12px;font-weight:600;white-space:nowrap}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.9}
+.chip.info{background:var(--info-bg);color:var(--info)} .chip.info::before{background:var(--info-dot)}
+.chip.ok{background:var(--ok-bg);color:var(--ok)} .chip.ok::before{background:var(--ok-dot)}
+.chip.warn{background:var(--warn-bg);color:var(--warn)} .chip.warn::before{background:var(--warn-dot)}
+.chip.neu{background:var(--neu-bg);color:var(--neu)} .chip.neu::before{background:var(--neu-dot)}
+.ph{background:var(--soft);display:grid;place-items:center;color:var(--mut);font-size:13px;text-align:center;padding:16px}
+.photo{width:100%;height:100%;object-fit:cover;border-radius:var(--r-img);background:var(--soft)}
+
+/* ---------- 홈 ---------- */
+.hero{position:relative;min-height:540px;height:calc(100svh - 120px);max-height:820px;color:#fff;overflow:hidden;background:#3a2d22}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,16,12,.62) 0%,rgba(20,16,12,.18) 46%,rgba(20,16,12,0) 70%)}
+.hero .wrap{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:40px}
+.hero h1{font-size:36px;font-weight:700;line-height:1.2;letter-spacing:-.03em}
+.hero .wrap p{margin:16px 0 24px;font-size:17px;max-width:30em;color:rgba(255,255,255,.9)}
+.hero .row{display:flex;gap:8px 20px;flex-wrap:wrap;align-items:center}
+.hero .tlink{color:#fff}
+@media (min-width:1024px){ .hero h1{font-size:64px} .hero .wrap{padding-bottom:72px} }
+
+.statement{display:grid;gap:24px}
+.statement .big{font-size:24px;font-weight:600;line-height:1.5;letter-spacing:-.02em;margin:0}
+@media (min-width:1024px){ .statement{grid-template-columns:8fr 4fr;gap:64px;align-items:end} .statement .big{font-size:34px} }
+
+.ritual{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr}
+.ritual > div{padding:24px 0;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:16px}
+.ritual > div:last-child{border-bottom:0}
+.ritual .n{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1;min-width:132px}
+.ritual .n small{font-size:15px;font-weight:500;color:var(--mut);margin-left:4px}
+.ritual h3{font-size:17px;font-weight:600}
+.ritual p{margin:4px 0 0;color:var(--mut);font-size:14px}
+@media (min-width:768px){ .ritual{grid-template-columns:repeat(3,1fr)} .ritual > div{display:block;border-bottom:0;border-right:1px solid var(--line);padding:32px 24px 32px 0} .ritual > div + div{padding-left:24px} .ritual > div:last-child{border-right:0} .ritual .n{font-size:64px;margin-bottom:16px} }
+
+.space-tease{display:grid;gap:24px;align-items:center}
+.space-tease .pic{position:relative;aspect-ratio:4/3}
+.facts{margin:24px 0;display:grid;gap:0;border-top:1px solid var(--line)}
+.facts div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.facts dt{color:var(--mut)} .facts dd{margin:0}
+@media (min-width:1024px){ .space-tease{grid-template-columns:7fr 5fr;gap:64px} .space-tease .pic{aspect-ratio:auto;height:560px} }
+
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:72%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gut)*-1);padding:0 var(--gut) 8px;scrollbar-width:none}
+.picks::-webkit-scrollbar{display:none}
+.picks > *{scroll-snap-align:start}
+@media (min-width:1024px){ .picks{grid-auto-flow:row;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;overflow:visible;margin:0;padding:0;gap:24px 24px} .picks .feat{grid-row:span 2} .picks .feat .pimg{aspect-ratio:auto;height:calc(100% - 64px)} }
+
+.prod{display:block;text-decoration:none;color:inherit}
+.prod .pimg{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r-img);background:var(--soft)}
+.prod .pimg img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.prod:hover .pimg img{transform:scale(1.03)}
+.prod .pimg .chip{position:absolute;left:8px;top:8px}
+.prod .meta{padding-top:12px}
+.prod .nm{font-size:15px;font-weight:500}
+.prod .pr{font-size:15px;font-weight:600;margin-top:2px}
+.prod .pr s{color:var(--mut-2);font-weight:400;font-size:13px;margin-left:6px}
+.prod.soldout .pimg img{opacity:.55}
+
+.journal{display:grid;gap:0;border-top:1px solid var(--line)}
+.journal a{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.journal .jimg{aspect-ratio:1;border-radius:var(--r-img);overflow:hidden}
+.journal h3{font-size:17px;font-weight:600}
+.journal p{margin:4px 0 0;font-size:14px;color:var(--mut)}
+@media (min-width:1024px){ .journal a{grid-template-columns:240px 1fr 160px;gap:32px;padding:24px 0} .journal .jimg{aspect-ratio:3/2} .journal h3{font-size:20px} }
+.journal .when{font-size:13px;color:var(--mut)}
+
+/* ---------- 브랜드 ---------- */
+.ph-hero{position:relative;height:56svh;min-height:360px;max-height:640px;overflow:hidden}
+.ph-hero img{width:100%;height:100%;object-fit:cover}
+.story{display:grid;gap:32px}
+.story p{margin:0 0 16px;font-size:17px;color:var(--ink-2)}
+@media (min-width:1024px){ .story{grid-template-columns:5fr 6fr;gap:96px} }
+.split{display:grid;gap:24px;align-items:center}
+.split .pic{aspect-ratio:4/5}
+@media (min-width:1024px){ .split{grid-template-columns:5fr 6fr;gap:96px} .split .pic{aspect-ratio:4/5} }
+.vals{border-top:1px solid var(--ink)}
+.vals div{display:grid;gap:4px;padding:20px 0;border-bottom:1px solid var(--line)}
+.vals dt{font-weight:600;font-size:17px}
+.vals dd{margin:0;color:var(--mut)}
+@media (min-width:768px){ .vals div{grid-template-columns:240px 1fr;gap:24px} }
+
+/* ---------- 공간 ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:32px}
+.steps li{list-style:none;font-size:12px;color:var(--mut)}
+.steps li::before{content:"";display:block;height:4px;border-radius:2px;background:var(--line);margin-bottom:8px}
+.steps li.done::before{background:var(--ink)}
+.steps li.now{color:var(--ink);font-weight:600}
+.steps li.now::before{background:linear-gradient(to right,var(--ink) 50%,var(--line) 50%)}
+.steps{padding:0;margin-bottom:0}
+.fac{display:grid;gap:12px}
+.fac button{all:unset;cursor:pointer;display:block;width:100%;box-sizing:border-box;position:relative;border-radius:var(--r-img);overflow:hidden;background:var(--soft)}
+.fac button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.fac .fimg{aspect-ratio:4/3}
+.fac .fimg img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.fac button:hover .fimg img{transform:scale(1.03)}
+.fac .cap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 4px 4px;background:var(--bg)}
+.fac .cap b{font-size:17px;font-weight:600}
+.fac .cap span{font-size:13px;color:var(--mut);display:inline-flex;align-items:center;gap:4px}
+.fac .ph{aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--soft) 0 12px,#E9E5DE 12px 24px)}
+@media (min-width:768px){ .fac{grid-template-columns:repeat(12,1fr);gap:40px 24px} .fac > :nth-child(1),.fac > :nth-child(4){grid-column:span 7} .fac > :nth-child(2),.fac > :nth-child(3){grid-column:span 5} .fac .fimg,.fac .ph{aspect-ratio:auto;height:360px} }
+@media (min-width:1200px){ .fac .fimg,.fac .ph{height:440px} }
+.info-tbl{border-top:1px solid var(--ink)}
+.info-tbl div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.info-tbl dt{color:var(--mut);font-size:14px}
+.info-tbl dd{margin:0}
+@media (min-width:768px){ .info-tbl div{grid-template-columns:200px 1fr} }
+.resv{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card);padding:24px}
+.resv .days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:16px 0}
+.resv .days span{height:44px;display:grid;place-items:center;border-radius:var(--r-sm);background:var(--soft);color:var(--mut-2);font-size:13px}
+.two{display:grid;gap:32px}
+@media (min-width:1024px){ .two{grid-template-columns:1fr 1fr;gap:64px} }
+
+/* ---------- 샵 ---------- */
+.shop-top{padding:40px 0 16px}
+.ext-note{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:var(--r-md);background:var(--point);color:var(--point-ink);font-size:14px;margin-top:16px}
+.cats{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gut)*-1);padding:0 var(--gut)}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:none;height:44px;padding:0 16px;border-radius:var(--r-pill);border:1px solid var(--line);background:var(--card);font-size:14px;font-weight:500}
+.cats button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.cats button span{color:inherit;opacity:.6;margin-left:4px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--line);margin-bottom:24px;font-size:14px}
+.toolbar select{height:44px;border:0;background:transparent;font-weight:500;padding:0 4px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 12px}
+@media (min-width:1024px){ .grid{grid-template-columns:repeat(4,1fr);gap:48px 24px} }
+.empty{padding:64px 16px;text-align:center;color:var(--mut)}
+
+/* ---------- 상세 ---------- */
+.pd{display:grid;gap:24px;padding-top:16px}
+.crumb{font-size:13px;color:var(--mut);padding-top:16px}
+.crumb a{text-decoration:none;color:var(--mut);display:inline-block;min-height:32px;line-height:32px}
+.gal .main{aspect-ratio:4/5;border-radius:var(--r-img);overflow:hidden;background:var(--soft);margin:0 calc(var(--gut)*-1)}
+.gal .main img{width:100%;height:100%;object-fit:cover}
+.gal .th{display:flex;gap:8px;margin-top:8px}
+.gal .th button{width:64px;height:80px;padding:0;border:1px solid transparent;border-radius:var(--r-img);overflow:hidden;background:var(--soft)}
+.gal .th button[aria-pressed="true"]{border-color:var(--ink)}
+.gal .th img{width:100%;height:100%;object-fit:cover}
+.pinfo h1{font-size:24px;font-weight:600}
+.pinfo .price{font-size:24px;font-weight:700;margin-top:8px}
+.pinfo .desc{color:var(--ink-2);margin:16px 0 0}
+.opt{margin-top:24px}
+.opt .lb{font-size:13px;color:var(--mut);margin-bottom:8px;display:flex;justify-content:space-between}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts button{min-height:44px;padding:0 16px;border-radius:var(--r-pill);border:1px solid var(--line);background:var(--card);font-size:14px}
+.opts button[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);font-weight:600}
+.opts button:disabled{color:var(--mut-2);text-decoration:line-through;cursor:not-allowed}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--card)}
+.qty button{width:44px;height:44px;border:0;background:transparent;display:grid;place-items:center;border-radius:var(--r-pill)}
+.qty button:disabled{color:var(--mut-2)}
+.qty output{min-width:28px;text-align:center;font-weight:600}
+.sumrow{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid var(--line);margin-top:24px}
+.sumrow b{font-size:20px}
+.buy{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ship{font-size:13px;color:var(--mut);margin-top:12px}
+.tabs{display:flex;border-bottom:1px solid var(--line);margin-top:48px;overflow-x:auto;scrollbar-width:none}
+.tabs button{flex:none;height:52px;padding:0 16px;border:0;background:transparent;font-size:15px;font-weight:500;color:var(--mut);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
+.tabpanel{padding:24px 0}
+.detail-ph{max-width:860px;margin:0 auto;border:1px dashed #B9B3A8;border-radius:var(--r-md);min-height:360px;display:grid;place-items:center;text-align:center;color:var(--mut);padding:24px;background:var(--card)}
+.spec{max-width:720px}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--line);padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom));display:none}
+.mbar.show{display:flex;gap:12px;align-items:center}
+.mbar .p{flex:1;font-weight:700;font-size:17px}
+.mbar .btn{height:52px;border-radius:var(--r-md);flex:1.4}
+@media (min-width:1024px){ .pd{grid-template-columns:7fr 5fr;gap:64px;align-items:start} .gal .main{margin:0} .pinfo{position:sticky;top:92px} .mbar.show{display:none} }
+body.has-mbar{padding-bottom:80px}
+@media (min-width:1024px){ body.has-mbar{padding-bottom:0} }
+
+/* ---------- 장바구니·주문 ---------- */
+.cart{display:grid;gap:32px;padding:40px 0 64px}
+@media (min-width:1024px){ .cart{grid-template-columns:8fr 4fr;gap:48px;align-items:start} .cart aside{position:sticky;top:92px} }
+.line-item{display:grid;grid-template-columns:88px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.line-item .li-img{aspect-ratio:4/5;border-radius:var(--r-img);overflow:hidden;background:var(--soft)}
+.line-item .li-img img{width:100%;height:100%;object-fit:cover}
+.line-item .top{display:flex;justify-content:space-between;gap:8px}
+.line-item .nm{font-weight:600}
+.line-item .op{font-size:13px;color:var(--mut)}
+.line-item .bot{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.x{width:44px;height:44px;margin:-10px -10px 0 0;border:0;background:transparent;border-radius:var(--r-pill);display:grid;place-items:center;color:var(--mut)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
+.box .r{display:flex;justify-content:space-between;padding:6px 0;font-size:15px}
+.box .r.t{border-top:1px solid var(--line);margin-top:12px;padding-top:16px;font-weight:700;font-size:20px}
+.free{font-size:13px;color:var(--point-ink);background:var(--point);border-radius:var(--r-sm);padding:8px 12px;margin:12px 0}
+.bar{height:4px;background:var(--soft);border-radius:2px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--point-ink)}
+.fld{display:grid;gap:6px;margin-bottom:16px}
+.fld label{font-size:13px;font-weight:600;color:var(--ink-2)}
+.fld input,.fld select{height:48px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--card);padding:0 14px;font-size:15px;width:100%}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(31,30,28,.1)}
+.fld .err{display:none;color:var(--bad);font-size:13px}
+.fld.bad input{border-color:var(--bad)}
+.fld.bad .err{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pay label{display:flex;align-items:center;gap:8px;min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--card);font-size:14px;cursor:pointer}
+.pay input{accent-color:var(--ink);width:18px;height:18px}
+.pay label:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.chk{display:flex;gap:10px;align-items:flex-start;min-height:44px;padding:10px 0;font-size:14px;cursor:pointer}
+.chk input{width:20px;height:20px;accent-color:var(--ink);margin:1px 0 0;flex:none}
+fieldset{border:0;padding:0;margin:0 0 32px}
+legend{font-size:17px;font-weight:600;margin-bottom:16px;padding:0}
+
+/* ---------- 로그인 ---------- */
+.auth{max-width:420px;margin:0 auto;padding:48px 0 80px}
+.auth .seg2{display:grid;grid-template-columns:1fr 1fr;background:var(--soft);border-radius:var(--r-pill);padding:4px;margin:24px 0}
+.auth .seg2 button{height:44px;border:0;border-radius:var(--r-pill);background:transparent;font-weight:500;color:var(--mut)}
+.auth .seg2 button[aria-selected="true"]{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(31,30,28,.08)}
+.or{display:flex;align-items:center;gap:12px;color:var(--mut);font-size:13px;margin:24px 0 16px}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.sns{display:grid;gap:8px}
+.sns button{height:48px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--card);font-weight:600;font-size:14px}
+.sns .kakao{background:#FEE500;border-color:#FEE500;color:#191600}
+.sns .naver{background:#03A94D;border-color:#03A94D;color:#fff}
+.help{display:flex;justify-content:center;gap:16px;font-size:13px;margin-top:16px}
+.help a{color:var(--mut);min-height:44px;display:inline-flex;align-items:center}
+
+/* ---------- 마이페이지 ---------- */
+.my{padding-top:40px;padding-bottom:80px}
+.my-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);margin:24px 0 32px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.stat div{padding:16px 0}
+.stat div + div{padding-left:16px;border-left:1px solid var(--line)}
+.stat b{display:block;font-size:24px;font-weight:700}
+.stat span{font-size:13px;color:var(--mut)}
+.my-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-bottom:16px}
+.my-tabs button{flex:none;height:44px;padding:0 16px;border-radius:var(--r-pill);border:0;background:transparent;font-size:14px;font-weight:500;color:var(--mut)}
+.my-tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.order{border:1px solid var(--line);background:var(--card);border-radius:var(--r-lg);margin-bottom:12px;overflow:hidden}
+.order > button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;width:100%;padding:16px}
+.order > button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.order .oi{aspect-ratio:4/5;border-radius:var(--r-img);overflow:hidden;background:var(--soft)}
+.order .oi img{width:100%;height:100%;object-fit:cover}
+.order .od{font-size:13px;color:var(--mut)}
+.order .on{font-weight:600;margin:2px 0}
+.order .ex{display:none;border-top:1px solid var(--line);padding:16px;font-size:14px}
+.order.open .ex{display:block}
+.order .chev{transition:transform .2s;color:var(--mut)}
+.order.open .chev{transform:rotate(180deg)}
+.track{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:8px 0 16px;padding:0}
+.track li{list-style:none;font-size:12px;color:var(--mut)}
+.track li::before{content:"";display:block;height:4px;border-radius:2px;background:var(--line);margin-bottom:6px}
+.track li.done::before{background:var(--ink)}
+.track li.done{color:var(--ink)}
+.order .acts{display:flex;gap:8px;flex-wrap:wrap}
+.order .acts .btn{height:44px;padding:0 16px;font-size:14px}
+
+/* ---------- 인계 자료 ---------- */
+.ho{padding-top:40px;padding-bottom:80px}
+.sw{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0 40px}
+@media (min-width:768px){ .sw{grid-template-columns:repeat(4,1fr)} }
+.sw div{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--card);font-size:13px}
+.sw i{display:block;height:64px}
+.sw p{margin:0;padding:10px 12px}
+.sw code{font-family:var(--mono);font-size:12px;color:var(--mut)}
+.type-scale div{display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.type-scale code{font-family:var(--mono);font-size:12px;color:var(--mut);min-width:120px}
+.map{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border-radius:var(--r-lg);overflow:hidden}
+.map th{background:var(--soft);text-align:left;font-size:13px;color:var(--mut);font-weight:600;padding:12px}
+.map td{padding:14px 12px;border-top:1px solid var(--line);vertical-align:top}
+@media (max-width:767px){
+  .map thead{display:none}
+  .map,.map tbody,.map tr,.map td{display:block;width:100%}
+  .map tr{border-top:1px solid var(--line);padding:12px 16px}
+  .map td{border:0;padding:2px 0}
+  .map td:first-child{font-weight:600;font-size:15px}
+  .map td[data-l]::before{content:attr(data-l) " · ";color:var(--mut);font-size:12px}
+}
+
+/* ---------- 바닥 ---------- */
+.ft{background:#2B2A27;color:#CFCAC1;font-size:13px;padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
+.ft .logo{color:#F6F4F0}
+.ft .cols{display:grid;gap:24px;margin-top:24px}
+@media (min-width:1024px){ .ft .cols{grid-template-columns:2fr 1fr 1fr} }
+.ft a{color:#EDEAE4;text-decoration:none;display:inline-flex;min-height:36px;align-items:center}
+.ft ul{list-style:none;margin:0;padding:0}
+.ft p{margin:0 0 6px}
+.credit{margin-top:32px;padding-top:16px;border-top:1px solid #45433F;color:#A9A398;font-size:12px}
+.credit a{color:#CFCAC1;min-height:0;display:inline;text-decoration:underline}
+
+/* ---------- 팝업·토스트 ---------- */
+.dlg{position:fixed;inset:0;z-index:80;display:none;align-items:flex-end;justify-content:center;background:rgba(31,30,28,.48)}
+.dlg.open{display:flex}
+.dlg .panel{background:var(--bg);width:100%;max-height:90svh;overflow:auto;border-radius:var(--r-xl) var(--r-xl) 0 0;box-shadow:var(--sh-pop);padding:8px 0 calc(24px + env(safe-area-inset-bottom))}
+.dlg .grab{width:36px;height:4px;border-radius:2px;background:#CFCAC1;margin:4px auto 8px}
+.dlg .ptop{display:flex;justify-content:flex-end;padding:0 8px}
+.dlg .pbody{padding:0 24px}
+.dlg .pimg{aspect-ratio:16/10;border-radius:var(--r-img);overflow:hidden;margin-bottom:20px;background:var(--soft)}
+.dlg .pimg img{width:100%;height:100%;object-fit:cover}
+@media (min-width:768px){ .dlg{align-items:center;padding:24px} .dlg .panel{max-width:720px;border-radius:var(--r-xl);padding-top:16px} .dlg .grab{display:none} }
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);z-index:90;background:var(--ink);color:#fff;padding:12px 20px;border-radius:var(--r-pill);font-size:14px;opacity:0;pointer-events:none;transition:.2s;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+body.has-mbar .toast{bottom:96px}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<!-- 시안 안내 띠 -->
+<div class="demo" role="region" aria-label="시안 안내">
+  <div class="wrap">
+    <p class="lab" style="margin:0"><b>제안용 시안 · 예시</b> 가상 브랜드 'HANSUM 한숨'으로 만든 화면이에요. 사진은 Unsplash, 이름·가격·문구는 모두 예시예요.</p>
+    <div class="ctl">
+      <div class="seg" role="group" aria-label="메뉴 구조">
+        <button type="button" data-mode="int" aria-pressed="true">통합형</button>
+        <button type="button" data-mode="ext" aria-pressed="false">외부 판매 연결형</button>
+      </div>
+      <button type="button" class="tgl" id="imToggle" aria-pressed="true">아임웹 메모 켜짐</button>
+      <label class="sr" for="jump">화면 바로가기</label>
+      <select id="jump">
+        <option value="home">1 메인</option>
+        <option value="brand">2 브랜드·저널</option>
+        <option value="space">3 공간·시설</option>
+        <option value="shop">4 상품 목록</option>
+        <option value="product">5 상품 상세</option>
+        <option value="cart">6 장바구니·주문</option>
+        <option value="login">7 로그인·회원가입</option>
+        <option value="my">8 마이페이지</option>
+        <option value="handoff">+ 인계 자료 예시</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-open" viewBox="0 0 24 24"><path d="M4 9V4h5M20 15v5h-5M4 4l6 6M20 20l-6-6"/></symbol>
+</svg>
+
+<!-- 머리 -->
+<header class="hd">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="HANSUM 홈">HANSUM <small>한숨</small></a>
+    <nav class="nav" aria-label="주 메뉴">
+      <a href="#brand" data-nav="brand">브랜드</a>
+      <a href="#space" data-nav="space">공간</a>
+      <a href="#brand-journal" data-nav="journal">저널</a>
+      <a href="#shop" data-nav="shop" class="only-int">샵</a>
+      <a href="#" class="only-ext ext-link">샵 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
+    </nav>
+    <div class="act">
+      <a class="icon-btn only-int" href="#login" id="acctBtn" aria-label="로그인"><svg class="ico"><use href="#i-user"/></svg></a>
+      <a class="icon-btn only-int" href="#cart" aria-label="장바구니"><svg class="ico"><use href="#i-bag"/></svg><span class="badge num" id="cartCount" hidden>0</span></a>
+      <button class="icon-btn menu-btn" type="button" id="menuOpen" aria-label="메뉴 열기" aria-expanded="false"><svg class="ico"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="메뉴">
+  <div class="top"><span class="logo">HANSUM <small>한숨</small></span><button class="icon-btn" type="button" id="menuClose" aria-label="메뉴 닫기"><svg class="ico"><use href="#i-x"/></svg></button></div>
+  <nav aria-label="모바일 메뉴">
+    <a href="#brand">브랜드</a>
+    <a href="#space">공간 <span class="chip info">준비 중</span></a>
+    <a href="#brand-journal">저널</a>
+    <a href="#shop" class="only-int">샵</a>
+    <a href="#" class="only-ext ext-link">샵 <svg class="ico"><use href="#i-ext"/></svg></a>
+  </nav>
+  <div class="sub only-int"><a class="btn line" href="#login">로그인</a><a class="btn line" href="#my">주문 조회</a></div>
+  <p class="im" style="margin:8px var(--gut)">상단 메뉴 = 아임웹 '메뉴 관리'의 그룹 메뉴. 모바일 메뉴는 디자인 모드 상단 설정의 모바일 메뉴 스타일로 맞춰요 (세부 옵션 확인 필요)</p>
+</div>
+
+<main>
+<!-- ============ 1 메인 ============ -->
+<section class="page" id="p-home" data-page="home" aria-label="메인">
+  <div class="hero">
+    <p class="im on-photo">섹션 배경 이미지(풀폭) + 텍스트·버튼 위젯. 모바일용 사진은 따로 지정</p>
+    <img src="https://images.unsplash.com/photo-1786799901347-e45b3e2d64ea?w=1800&q=72&auto=format&fit=crop" alt="창으로 숲이 보이는 나무 사우나 실내">
+    <div class="wrap">
+      <h1>땀 내고, 식히고,<br>한숨 돌리고.</h1>
+      <p>집에서 쓰는 사우나 타월과 로브, 그리고 부산에 준비 중인 작은 사우나 공간.</p>
+      <div class="row">
+        <a class="btn light" href="#space">공간 미리 보기</a>
+        <a class="tlink only-int" href="#shop">타월 보러 가기</a>
+        <a class="tlink only-ext ext-link" href="#">스토어 가기 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <p class="im">텍스트 위젯 2개를 그리드 8:4로 배치</p>
+      <div class="statement">
+        <p class="big">뜨거운 방에서 10분, 찬물에서 1분, 그리고 아무것도 하지 않는 10분. 한숨은 그 마지막 10분을 위한 물건과 공간을 만들어요.</p>
+        <div>
+          <p class="mut" style="margin:0 0 8px">2025년 서울에서 타월 한 장으로 시작했어요. 몸에 닿는 천과 쉬는 자리의 온도를 오래 고민해요.</p>
+          <a class="tlink" href="#brand">브랜드 이야기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="im">텍스트 위젯 3열 그리드 (모바일 1열로 쌓임). 큰 숫자는 글자 크기만 키움</p>
+    <div class="ritual" aria-label="한 번의 순환">
+      <div><p class="n num">10<small>분</small></p><div><h3>덥히기</h3><p>80~90도 건식 사우나에서 땀이 날 때까지.</p></div></div>
+      <div><p class="n num">1<small>분</small></p><div><h3>식히기</h3><p>찬물이나 찬 샤워로 숨을 고르며.</p></div></div>
+      <div><p class="n num">10<small>분</small></p><div><h3>쉬기</h3><p>로브를 걸치고, 휴대폰은 내려두고.</p></div></div>
+    </div>
+    <p class="small mut" style="margin:12px 0 0">시간은 일반적인 예시예요. 몸 상태에 맞게 줄여 주세요.</p>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="space-tease">
+        <div class="pic">
+          <p class="im on-photo" style="left:12px">이미지 위젯 (크게) — 공간 사진이 생기면 이 자리만 바꿔요</p>
+          <img class="photo" src="https://images.unsplash.com/photo-1779966731482-e5e3e104570a?w=1400&q=72&auto=format&fit=crop" alt="잔잔한 바다와 멀리 떠 있는 작은 배">
+        </div>
+        <div>
+          <span class="chip info">부산 · 준비 중</span>
+          <h2 class="h-lg" style="margin-top:16px">바다 쪽으로 창을 낸<br>작은 사우나를 짓고 있어요</h2>
+          <dl class="facts">
+            <div><dt>정해진 것</dt><dd>부산, 건식 사우나 · 냉탕 · 휴식 라운지</dd></div>
+            <div><dt>정하는 중</dt><dd>정확한 위치, 오픈 시기, 이용 요금</dd></div>
+            <div><dt>먼저 받기</dt><dd>공사 기록과 오픈 소식을 메일로 보내요</dd></div>
+          </dl>
+          <div class="row" style="display:flex;gap:8px 20px;flex-wrap:wrap;align-items:center">
+            <button class="btn" type="button" data-open="notify">오픈 소식 받기</button>
+            <a class="tlink" href="#space">공간 계획 보기</a>
+          </div>
+          <p class="im" style="margin-top:16px">'오픈 소식 받기' = 아임웹 입력폼 위젯을 팝업으로 연결 (팝업 방식 확인 필요)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec" style="padding-top:0">
+    <div class="wrap">
+      <p class="im only-int">쇼핑 위젯(상품 목록) — PC는 큰 상품 1 + 작은 상품 4, 모바일은 가로로 넘기기 (배치 가능 여부 확인 필요)</p>
+      <p class="im only-ext">이미지 + 버튼 위젯. 버튼 링크를 외부 스토어 상품 주소로 연결</p>
+      <div class="sec-head">
+        <h2 class="h-lg">쉬는 시간에 쓰는 것들</h2>
+        <a class="tlink only-int" href="#shop">전체 보기</a>
+        <a class="tlink only-ext ext-link" href="#">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
+      </div>
+      <div class="picks" id="picks"></div>
+    </div>
+  </div>
+
+  <div class="sec" style="padding-top:0">
+    <div class="wrap">
+      <p class="im">게시판 위젯(갤러리·리스트형)으로 저널 글 목록. 글은 운영자가 직접 올림</p>
+      <div class="sec-head"><h2 class="h-lg">저널</h2><a class="tlink" href="#brand-journal">모두 보기</a></div>
+      <div class="journal" id="journalHome"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 브랜드 ============ -->
+<section class="page" id="p-brand" data-page="brand" aria-label="브랜드">
+  <div class="ph-hero">
+    <p class="im on-photo">섹션 배경 이미지 (높이 고정)</p>
+    <img src="https://images.unsplash.com/photo-1660735698223-23a4edefa264?w=1800&q=72&auto=format&fit=crop" alt="사우나 스토브의 뜨거운 돌 위로 피어오르는 김">
+  </div>
+  <div class="sec">
+    <div class="wrap story">
+      <h1 class="h-xl">쉬는 일도<br>연습이 필요해서</h1>
+      <div>
+        <p>바쁜 날일수록 쉬는 법을 잊어요. 사우나는 억지로라도 멈추게 하는 몇 안 되는 곳이었어요. 뜨거운 방에 앉아 있으면 할 수 있는 일이 숨 쉬는 것밖에 없으니까요.</p>
+        <p>한숨은 그 시간을 집으로, 그리고 언젠가 우리만의 공간으로 옮기려고 시작했어요. 먼저 매일 몸에 닿는 타월과 로브부터 만들고 있어요.</p>
+        <p class="small mut">브랜드 문구는 시안용 예시예요. 실제 문구와 로고·색·글꼴은 11월 중순 전달 주시는 브랜드 자료로 바꿔요.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="split">
+      <div class="pic"><img class="photo" src="https://images.unsplash.com/photo-1678988227223-45112511eca2?w=1000&q=72&auto=format&fit=crop" alt="나무 사우나 벤치 위 검은 물통과 나무 국자"></div>
+      <div>
+        <p class="im">텍스트 위젯 + 표 대신 '목록' 스타일 텍스트 (줄 구분선은 섹션 안 구분선 위젯)</p>
+        <h2 class="h-lg" style="margin-bottom:24px">우리가 지키는 것</h2>
+        <dl class="vals">
+          <div><dt>오래 쓰는 천</dt><dd>삶아 빨아도 형태가 유지되는 두꺼운 면만 골라요.</dd></div>
+          <div><dt>직접 써 본 것만</dt><dd>사우나와 집에서 한 달 이상 써 보고 판매를 정해요.</dd></div>
+          <div><dt>조용한 공간</dt><dd>공간은 크게 짓지 않아요. 대화보다 쉼이 먼저인 곳으로요.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="sec" id="brand-journal">
+    <div class="wrap">
+      <p class="im">게시판 위젯 — 카테고리: 사우나 이야기 / 공간 기록 / 제품 노트</p>
+      <div class="sec-head"><h2 class="h-lg">저널</h2><span class="small mut">공간이 지어지는 과정도 여기에 쌓여요</span></div>
+      <div class="journal" id="journalAll"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 공간 ============ -->
+<section class="page" id="p-space" data-page="space" aria-label="공간">
+  <div class="sec" style="padding-bottom:48px">
+    <div class="wrap">
+      <span class="chip info">부산 · 2027년 오픈 목표 (예시)</span>
+      <h1 class="h-xl" style="margin-top:16px">한숨 부산</h1>
+      <p class="lead">바다 가까운 골목에 사우나 두 칸과 냉탕, 오래 앉아 있을 수 있는 휴식 라운지를 준비하고 있어요. 확정되는 대로 이 페이지를 채워 갈게요.</p>
+      <ol class="steps" aria-label="진행 상황">
+        <li class="done">장소 찾기</li>
+        <li class="now" aria-current="step">설계 · 지금</li>
+        <li>공사</li>
+        <li>오픈</li>
+      </ol>
+      <p class="im" style="margin-top:16px">진행 막대는 이미지 1장으로 만들어 단계마다 교체 (가장 쉬운 운영 방법)</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="im">이미지 위젯 + 클릭 시 팝업. 사진이 없는 시설은 '준비 중' 이미지를 같은 크기로 넣어 자리를 유지</p>
+    <div class="fac" id="fac"></div>
+  </div>
+  <div class="sec">
+    <div class="wrap two">
+      <div>
+        <h2 class="h-lg" style="margin-bottom:24px">이용 안내</h2>
+        <dl class="info-tbl">
+          <div><dt>운영 시간</dt><dd>오픈 전 공개</dd></div>
+          <div><dt>요금</dt><dd>오픈 전 공개 · 1회 이용권과 정기권을 검토 중</dd></div>
+          <div><dt>준비물</dt><dd>없어도 돼요. 타월·로브·사우나 햇을 빌려드려요</dd></div>
+          <div><dt>위치</dt><dd>부산 (확정 후 지도 표시)</dd></div>
+        </dl>
+        <p class="im" style="margin-top:16px">오픈 후 '위치'에 지도 위젯 추가</p>
+      </div>
+      <div>
+        <h2 class="h-lg" style="margin-bottom:24px">예약</h2>
+        <div class="resv" aria-disabled="true">
+          <span class="chip neu">오픈 한 달 전에 열려요</span>
+          <div class="days" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+          <p class="mut small" style="margin:0 0 16px">지금은 자리만 잡아 두었어요. 예약이 열리면 소식 받기를 신청한 분께 먼저 알려드려요.</p>
+          <button class="btn block" type="button" data-open="notify">예약 열림 알림 받기</button>
+        </div>
+        <p class="im" style="margin-top:16px">오픈 후 아임웹 예약 기능(관리자에서 켜는 무료 기능)으로 교체. 지금은 이미지 + 버튼만</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 상품 목록 ============ -->
+<section class="page" id="p-shop" data-page="shop" aria-label="상품 목록">
+  <div class="wrap">
+    <div class="shop-top">
+      <h1 class="h-xl">샵</h1>
+      <p class="lead" style="margin-top:8px">사우나에서도, 집 욕실에서도 쓰는 천.</p>
+      <div class="ext-note only-ext"><svg class="ico"><use href="#i-ext"/></svg><span>외부 판매 연결형에서는 이 목록을 사이트 안에서 보여주고, 구매 버튼만 외부 스토어로 연결해요. 장바구니·회원 화면은 만들지 않아요.</span></div>
+    </div>
+    <p class="im only-int">쇼핑 위젯 — 카테고리 탭 + 상품 목록(2열/4열). 정렬은 쇼핑 위젯 기본 기능 사용</p>
+    <div class="cats" role="group" aria-label="카테고리" id="cats"></div>
+    <div class="toolbar">
+      <span class="mut num" id="count">상품 8개</span>
+      <label class="sr" for="sort">정렬</label>
+      <select id="sort"><option value="new">신상품순</option><option value="low">낮은 가격순</option><option value="high">높은 가격순</option></select>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden><p>이 분류에는 아직 상품이 없어요.</p><button class="btn line" type="button" data-cat="all">전체 상품 보기</button></div>
+    <div style="height:80px"></div>
+  </div>
+</section>
+
+<!-- ============ 5 상품 상세 ============ -->
+<section class="page" id="p-product" data-page="product" aria-label="상품 상세">
+  <div class="wrap">
+    <nav class="crumb" aria-label="위치"><a href="#shop">샵</a> / <span id="pdCat">타월</span></nav>
+    <p class="im only-int">아임웹 기본 상품 상세 화면. 사진·옵션·버튼 배치는 디자인 모드 '쇼핑 설정'에서 조정 가능한 범위로 맞춤 (범위 확인 필요)</p>
+    <div class="pd">
+      <div class="gal">
+        <div class="main"><img id="pdMain" src="data:," alt=""><span id="pdPh" hidden>촬영 전 자리<br>상품 사진은 촬영 후 들어가요</span></div>
+        <div class="th" id="pdThumbs"></div>
+      </div>
+      <div class="pinfo">
+        <span class="chip ok" id="pdBadge" hidden>신상품</span>
+        <h1 id="pdName" style="margin-top:8px">와플 사우나 타월</h1>
+        <p class="price num" id="pdPrice">38,000원</p>
+        <p class="desc" id="pdDesc"></p>
+        <div class="opt"><div class="lb"><span>색상</span><span id="pdColorName"></span></div><div class="opts" id="pdColors"></div></div>
+        <div class="opt"><div class="lb"><span>크기</span></div><div class="opts" id="pdSizes"></div></div>
+        <div class="opt only-int"><div class="lb"><span>수량</span></div>
+          <div class="qty"><button type="button" id="qMinus" aria-label="수량 줄이기"><svg class="ico ico-s"><use href="#i-minus"/></svg></button><output id="qVal" class="num">1</output><button type="button" id="qPlus" aria-label="수량 늘리기"><svg class="ico ico-s"><use href="#i-plus"/></svg></button></div>
+        </div>
+        <div class="sumrow only-int"><span class="mut">합계</span><b class="num" id="pdTotal">38,000원</b></div>
+        <div class="buy only-int"><button class="btn line" type="button" id="addCart">장바구니 담기</button><button class="btn" type="button" id="buyNow">바로 구매</button></div>
+        <div class="only-ext" style="margin-top:24px"><a class="btn block ext-link" href="#">스토어에서 구매하기 <svg class="ico ico-s"><use href="#i-ext"/></svg></a><p class="im" style="margin-top:12px">상세는 사이트 안에, 구매만 외부로. 버튼 위젯 링크</p></div>
+        <p class="ship">5만 원 이상 무료 배송 · 오후 2시 전 주문은 당일 출고 (예시)</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="상품 정보">
+      <button role="tab" aria-selected="true" data-tab="t1" type="button">상세 정보</button>
+      <button role="tab" aria-selected="false" data-tab="t2" type="button">소재·관리</button>
+      <button role="tab" aria-selected="false" data-tab="t3" type="button">배송·교환</button>
+      <button role="tab" aria-selected="false" data-tab="t4" type="button">후기 <span class="num">0</span></button>
+    </div>
+    <div class="tabpanel" id="t1" role="tabpanel">
+      <div class="detail-ph"><div><b style="display:block;color:var(--ink);margin-bottom:8px">상세 이미지 자리</b>고객사에서 만든 상세 이미지가 들어가요 (이번 범위 밖).<br>폭과 여백 기준만 인계 자료에 적어 드려요.</div></div>
+    </div>
+    <div class="tabpanel" id="t2" role="tabpanel" hidden>
+      <dl class="info-tbl spec">
+        <div><dt>소재</dt><dd>면 100% (예시)</dd></div>
+        <div><dt>세탁</dt><dd>40도 이하 세탁기 사용 가능, 섬유유연제는 흡수력을 떨어뜨려요</dd></div>
+        <div><dt>건조</dt><dd>그늘에서 펴서 말려 주세요</dd></div>
+      </dl>
+    </div>
+    <div class="tabpanel" id="t3" role="tabpanel" hidden>
+      <dl class="info-tbl spec">
+        <div><dt>배송비</dt><dd>3,000원 · 5만 원 이상 무료 (예시)</dd></div>
+        <div><dt>교환·반품</dt><dd>받은 날부터 7일 안에, 사용하지 않은 상품만 가능해요</dd></div>
+      </dl>
+    </div>
+    <div class="tabpanel" id="t4" role="tabpanel" hidden>
+      <div class="empty" style="padding:40px 16px"><p>아직 후기가 없어요.</p><p class="small">구매하신 분만 쓸 수 있어요.</p></div>
+    </div>
+    <div style="height:64px"></div>
+  </div>
+</section>
+
+<!-- ============ 6 장바구니·주문 ============ -->
+<section class="page" id="p-cart" data-page="cart" aria-label="장바구니">
+  <div class="wrap">
+    <p class="im" style="margin-top:24px">아임웹 기본 장바구니·주문서 화면. 색·버튼 모양·글꼴만 맞추는 걸 기본으로 제안 (커스텀 범위 확인 필요)</p>
+    <div class="cart">
+      <div>
+        <h1 class="h-lg" id="cartTitle">장바구니</h1>
+        <div id="cartList"></div>
+        <div class="empty" id="cartEmpty" hidden><p style="font-size:17px;color:var(--ink)">장바구니가 비어 있어요.</p><a class="btn line" href="#shop" style="margin-top:8px">상품 보러 가기</a></div>
+        <form id="checkout" hidden novalidate style="margin-top:24px">
+          <fieldset><legend>받는 분</legend>
+            <div class="fld" id="f-name"><label for="oName">이름</label><input id="oName" autocomplete="name" placeholder="홍길동"><span class="err">이름을 적어 주세요</span></div>
+            <div class="fld" id="f-tel"><label for="oTel">휴대폰 번호</label><input id="oTel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000"><span class="err">숫자 10~11자리로 적어 주세요</span></div>
+            <div class="fld" id="f-addr"><label for="oAddr">주소</label><input id="oAddr" placeholder="주소 검색은 아임웹 기본 기능으로 열려요"><span class="err">주소를 적어 주세요</span></div>
+          </fieldset>
+          <fieldset><legend>결제 방법</legend>
+            <div class="pay">
+              <label><input type="radio" name="pay" checked> 카드</label>
+              <label><input type="radio" name="pay"> 계좌이체</label>
+              <label><input type="radio" name="pay"> 간편결제</label>
+              <label><input type="radio" name="pay"> 무통장입금</label>
+            </div>
+            <p class="small mut" style="margin-top:8px">실제 결제 수단은 연결한 결제 대행사(PG)에 따라 달라져요.</p>
+          </fieldset>
+          <label class="chk"><input type="checkbox" id="agree"> 주문 내용을 확인했고 결제에 동의해요</label>
+        </form>
+      </div>
+      <aside id="cartAside">
+        <div class="box">
+          <div class="r"><span class="mut">상품 금액</span><span class="num" id="sSub">0원</span></div>
+          <div class="r"><span class="mut">배송비</span><span class="num" id="sShip">0원</span></div>
+          <div class="free" id="sFree"><span id="sFreeTxt"></span><div class="bar"><i id="sBar" style="width:0"></i></div></div>
+          <div class="r t"><span>합계</span><span class="num" id="sTot">0원</span></div>
+          <button class="btn block" type="button" id="orderBtn" style="margin-top:16px">주문하기</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 로그인 ============ -->
+<section class="page" id="p-login" data-page="login" aria-label="로그인">
+  <div class="wrap">
+    <div class="auth">
+      <p class="im">아임웹 기본 로그인·회원가입 화면. 간편 로그인 종류는 아임웹에서 켤 수 있는 것으로 확정 (확인 필요)</p>
+      <h1 class="h-lg">반가워요</h1>
+      <p class="mut" style="margin:8px 0 0">회원이면 주문 조회와 공간 예약 알림을 한곳에서 볼 수 있어요.</p>
+      <div class="seg2" role="tablist"><button type="button" role="tab" aria-selected="true" data-auth="in">로그인</button><button type="button" role="tab" aria-selected="false" data-auth="up">회원가입</button></div>
+      <form id="fIn" novalidate>
+        <div class="fld" id="l-mail"><label for="lMail">이메일</label><input id="lMail" type="email" autocomplete="email" placeholder="name@example.com"><span class="err">이메일 형식을 확인해 주세요</span></div>
+        <div class="fld" id="l-pw"><label for="lPw">비밀번호</label><input id="lPw" type="password" autocomplete="current-password"><span class="err">비밀번호를 적어 주세요</span></div>
+        <button class="btn block" type="submit">로그인</button>
+        <div class="help"><a href="#login">아이디 찾기</a><a href="#login">비밀번호 찾기</a><a href="#my">비회원 주문 조회</a></div>
+      </form>
+      <form id="fUp" novalidate hidden>
+        <div class="fld" id="u-name"><label for="uName">이름</label><input id="uName" autocomplete="name"><span class="err">이름을 적어 주세요</span></div>
+        <div class="fld" id="u-mail"><label for="uMail">이메일</label><input id="uMail" type="email" autocomplete="email"><span class="err">이메일 형식을 확인해 주세요</span></div>
+        <div class="fld" id="u-pw"><label for="uPw">비밀번호</label><input id="uPw" type="password" autocomplete="new-password" placeholder="8자 이상"><span class="err">8자 이상으로 정해 주세요</span></div>
+        <label class="chk"><input type="checkbox" id="uAll"> 약관 전체 동의</label>
+        <label class="chk" style="padding-left:30px"><input type="checkbox" class="uReq"> (필수) 이용약관</label>
+        <label class="chk" style="padding-left:30px"><input type="checkbox" class="uReq"> (필수) 개인정보 수집·이용</label>
+        <label class="chk" style="padding-left:30px"><input type="checkbox"> (선택) 공간 오픈·새 상품 소식 받기</label>
+        <button class="btn block" type="submit" style="margin-top:8px">가입하기</button>
+      </form>
+      <div class="or">간편 로그인</div>
+      <div class="sns"><button type="button" class="kakao">카카오로 계속하기</button><button type="button" class="naver">네이버로 계속하기</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 마이페이지 ============ -->
+<section class="page" id="p-my" data-page="my" aria-label="마이페이지">
+  <div class="wrap my">
+    <p class="im">아임웹 기본 마이페이지(주문 내역). 화면 구조는 고정, 색·글꼴·버튼 모양을 맞춤</p>
+    <div class="my-head"><h1 class="h-lg">김*연 님의 주문</h1><a class="tlink" href="#login">회원 정보 수정</a></div>
+    <div class="stat">
+      <div><b class="num">3</b><span>전체 주문</span></div>
+      <div><b class="num">1</b><span>배송 중</span></div>
+      <div><b class="num">2,400</b><span>적립금(원)</span></div>
+    </div>
+    <div class="my-tabs" role="tablist"><button type="button" role="tab" aria-selected="true">주문 내역</button><button type="button" role="tab" aria-selected="false">취소·반품</button><button type="button" role="tab" aria-selected="false">배송지</button></div>
+    <div id="orders"></div>
+  </div>
+</section>
+
+<!-- ============ 인계 자료 예시 ============ -->
+<section class="page" id="p-handoff" data-page="handoff" aria-label="인계 자료 예시">
+  <div class="wrap ho">
+    <span class="chip neu">아임웹 개발자에게 드리는 자료 · 예시</span>
+    <h1 class="h-xl" style="margin-top:16px">인계 자료 미리보기</h1>
+    <p class="lead">Figma 원본과 함께 이 내용을 한 문서로 드려요. 개발자가 디자인 모드에서 그대로 옮길 수 있게 위젯 이름과 값으로 적어요.</p>
+    <h2 class="h-md" style="margin-top:48px">색</h2>
+    <div class="sw">
+      <div><i style="background:#F6F4F0;border-bottom:1px solid var(--line)"></i><p>바탕<br><code>#F6F4F0</code></p></div>
+      <div><i style="background:#1F1E1C"></i><p>글자·주요 버튼<br><code>#1F1E1C</code></p></div>
+      <div><i style="background:#6B675F"></i><p>보조 글자<br><code>#6B675F</code></p></div>
+      <div><i style="background:#DCE6EA"></i><p>포인트 바탕<br><code>#DCE6EA</code></p></div>
+    </div>
+    <h2 class="h-md">글자 크기 (PC / 모바일)</h2>
+    <div class="type-scale" style="margin:16px 0 48px">
+      <div><code>제목 52 / 32</code><span style="font-size:32px;font-weight:700;letter-spacing:-.025em">한숨 부산</span></div>
+      <div><code>구역 제목 32 / 24</code><span style="font-size:24px;font-weight:700">쉬는 시간에 쓰는 것들</span></div>
+      <div><code>본문 17 / 17</code><span style="font-size:17px">바다 가까운 골목에 사우나 두 칸</span></div>
+      <div><code>보조 13 / 13</code><span style="font-size:13px" class="mut">시간은 일반적인 예시예요</span></div>
+    </div>
+    <h2 class="h-md" style="margin-bottom:16px">화면별 구현 방법</h2>
+    <table class="map">
+      <thead><tr><th>화면</th><th>아임웹에서 만드는 방법</th><th>확인할 것</th></tr></thead>
+      <tbody>
+        <tr><td>메인</td><td data-l="방법">섹션 배경 이미지 + 텍스트·버튼 위젯, 쇼핑 위젯, 게시판 위젯</td><td data-l="확인">모바일 전용 배경 사진 지정, 상품 큰 칸 배치</td></tr>
+        <tr><td>브랜드·저널</td><td data-l="방법">이미지·텍스트 위젯, 게시판 위젯(저널)</td><td data-l="확인">게시판 목록 스킨 중 사진형 선택</td></tr>
+        <tr><td>공간·시설</td><td data-l="방법">이미지 위젯 + 팝업, 입력폼 위젯(소식 받기)</td><td data-l="확인">팝업을 기본 기능으로 할지 코드 위젯으로 할지</td></tr>
+        <tr><td>상품 목록·상세</td><td data-l="방법">쇼핑 위젯, 아임웹 기본 상세 화면</td><td data-l="확인">상세 화면에서 바꿀 수 있는 범위</td></tr>
+        <tr><td>장바구니·주문·회원</td><td data-l="방법">아임웹 기본 화면 + 색·버튼 스타일</td><td data-l="확인">간편 로그인 종류, 결제 대행사</td></tr>
+        <tr><td>예약 (오픈 후)</td><td data-l="방법">아임웹 예약 기능</td><td data-l="확인">시간대·인원 설정 방식</td></tr>
+      </tbody>
+    </table>
+    <p class="small mut" style="margin-top:12px">'확인할 것'은 착수 첫 주에 아임웹 테스트 사이트에서 직접 만들어 보고 확정해요.</p>
+  </div>
+</section>
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <span class="logo">HANSUM <small style="color:#A9A398">한숨</small></span>
+    <div class="cols">
+      <div>
+        <p>상호 (예시) · 대표 (예시) · 사업자등록번호 000-00-00000</p>
+        <p>통신판매업 신고 (예시) · 서울 송파구 (예시)</p>
+        <p>고객센터 평일 10:00–17:00</p>
+        <p class="im" style="margin-top:8px">아임웹 '하단 디자인'에 사업자 정보 입력</p>
+      </div>
+      <ul><li><a href="#brand">브랜드</a></li><li><a href="#space">공간</a></li><li><a href="#brand-journal">저널</a></li><li class="only-int"><a href="#shop">샵</a></li></ul>
+      <ul><li><a href="#login" class="only-int">로그인</a></li><li><a href="#my" class="only-int">주문 조회</a></li><li><a href="#handoff">인계 자료 예시</a></li></ul>
+    </div>
+    <p class="credit">사진: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — Clay Banks, HUUM, Lukas Kubica, Auroom Wellness, Anna Rafal, Mads Leif Hansen, Florencia Simonini, MADEINEGYPT.CA, engin akyurt, Grace Anne Bobadilla, Anastase Maragos, Natalia Marcelewicz. 브랜드·상품·가격·후기는 모두 시안용 예시예요.</p>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar"><span class="p num" id="mbarP">38,000원</span><button class="btn only-int" type="button" id="mbarBtn">장바구니 담기</button><a class="btn only-ext ext-link" href="#">스토어에서 구매 <svg class="ico ico-s"><use href="#i-ext"/></svg></a></div>
+
+<div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+  <div class="panel">
+    <div class="grab"></div>
+    <div class="ptop"><button class="icon-btn" type="button" id="dlgClose" aria-label="닫기"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <div class="pbody" id="dlgBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const U = (id,w) => `https://images.unsplash.com/photo-${id}?w=${w||900}&q=70&auto=format&fit=crop`;
+const won = n => n.toLocaleString('ko-KR') + '원';
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+const P = [
+  {id:'waffle', cat:'towel', nm:'와플 사우나 타월', pr:38000, img:['1760722974657-f64bce2f9cc5','1786799966417-bead801334e7','1684248655527-46bee8e79029'], colors:['오트','차콜'], sizes:['70×140','90×180'], badge:'신상품', desc:'벌집 모양 짜임이라 가볍고 빨리 말라요. 사우나 벤치에 깔고 앉아도, 나와서 몸을 감싸도 좋은 크기예요.'},
+  {id:'stripe', cat:'towel', nm:'스트라이프 벤치 타월', pr:42000, img:['1786800093023-33e6b7b6e847','1786799966417-bead801334e7'], colors:['먹색'], sizes:['60×160'], desc:'벤치에 길게 깔고 쓰는 타월이에요.'},
+  {id:'heavy', cat:'towel', nm:'헤비 코튼 바스 타월', pr:32000, img:['1638232928539-6e91c47ddec5'], colors:['그레이','화이트'], sizes:['80×150'], desc:'두껍고 묵직한 바스 타월이에요.'},
+  {id:'roll', cat:'towel', nm:'롤 핸드 타월 3장', pr:24000, was:30000, img:['1684248655527-46bee8e79029'], colors:['내추럴'], sizes:['34×80'], desc:'손과 얼굴에 쓰는 작은 타월 3장 묶음이에요.'},
+  {id:'face', cat:'towel', nm:'투톤 페이스 타월 2장', pr:19000, img:['1650481093978-6cc58e4649f4'], colors:['플럼·그레이'], sizes:['40×80'], soldout:true, desc:'두 가지 색을 한 장씩 담았어요.'},
+  {id:'robe-w', cat:'robe', nm:'와플 로브', pr:98000, img:['1781456507681-5da24b868457','1780571525506-67e3bb9ca947'], colors:['화이트'], sizes:['S/M','L/XL'], desc:'사우나 사이 쉬는 시간에 걸치는 얇은 로브예요.'},
+  {id:'robe-c', cat:'robe', nm:'코튼 테리 로브', pr:89000, img:['1780571525506-67e3bb9ca947','1781456507681-5da24b868457'], colors:['내추럴'], sizes:['FREE'], desc:'샤워 후 입는 도톰한 로브예요.'},
+  {id:'hat', cat:'hat', nm:'울 펠트 사우나 햇', pr:36000, img:[], colors:['베이지','차콜'], sizes:['FREE'], badge:'촬영 전', desc:'머리를 열기에서 지켜 주는 울 모자예요. 사진은 촬영 후 들어가요.'}
+];
+const CATS = [['all','전체'],['towel','타월'],['robe','로브'],['hat','모자'],['set','세트']];
+const J = [
+  {t:'처음 사우나에 가는 분께', d:'몇 분 앉아 있어야 할까? 물은 언제 마실까? 처음이라면 이것만 기억해요.', w:'사우나 이야기 · 10월 14일 (예시)', img:'1656416212216-cf05b2af2650'},
+  {t:'부산에서 찾은 첫 번째 자리', d:'바다까지 걸어서 7분. 아직 계약 전이라 이름은 비밀이에요.', w:'공간 기록 · 9월 28일 (예시)', img:'1779966731482-e5e3e104570a'},
+  {t:'로브를 고르는 세 가지 기준', d:'무게, 소매 길이, 그리고 마르는 시간.', w:'제품 노트 · 9월 2일 (예시)', img:'1767614580100-77aa92204e18'}
+];
+const FAC = [
+  {k:'sauna', nm:'건식 사우나', st:'설계 중', img:'1757940661240-f2e8d2ff93bf', body:'6명이 앉는 작은 방 두 칸. 한 칸은 낮은 온도로 오래 앉아 있을 수 있게 만들 예정이에요.', rows:[['크기','2칸 · 각 6인 (예정)'],['온도','80~90도 / 65~70도 (예정)'],['향','편백 · 계절마다 바꿈 (검토 중)']]},
+  {k:'cold', nm:'냉탕', st:'설계 중', img:'1712659606957-b7395ba9ebb2', body:'한 번에 두 명이 들어가는 깊은 냉탕이에요. 찬물이 어려운 분을 위한 찬 샤워도 옆에 둬요.', rows:[['수온','14~16도 (예정)'],['깊이','어깨까지 (예정)']]},
+  {k:'shower', nm:'샤워·파우더 룸', st:'사진 준비 중', img:'', body:'아직 보여드릴 사진이 없어요. 설계가 끝나면 도면 그림부터 먼저 올릴게요.', rows:[['구성','샤워 부스 · 파우더 룸 (예정)']]},
+  {k:'lounge', nm:'휴식 라운지', st:'설계 중', img:'1728404259075-209cfb5bb89c', body:'창 쪽으로 낮은 의자를 두고, 말없이 앉아 있을 수 있는 자리예요. 차와 물은 자유롭게 드세요.', rows:[['좌석','8석 (예정)'],['음료','보리차 · 물 (예정)']]}
+];
+
+let cat='all', sort='new', cur=P[0], color=0, size=0, qty=1;
+let cart=[{id:'waffle',c:0,s:0,q:1},{id:'robe-w',c:0,s:1,q:1}];
+let mode='int';
+try{ mode = localStorage.getItem('hs-mode')==='ext' ? 'ext' : 'int'; }catch(e){}
+
+function prodImg(p,w){ return p.img.length ? `<img src="${U(p.img[0],w)}" alt="${p.nm}">` : `<div class="ph" style="position:absolute;inset:0">${p.nm}<br>촬영 전 자리</div>`; }
+function card(p, feat){
+  const chip = p.soldout ? '<span class="chip neu">품절</span>' : (p.badge ? `<span class="chip ${p.badge==='촬영 전'?'neu':'ok'}">${p.badge}</span>` : '');
+  return `<a class="prod${feat?' feat':''}${p.soldout?' soldout':''}" href="#product/${p.id}"><div class="pimg">${prodImg(p, feat?1200:700)}${chip}</div><div class="meta"><div class="nm">${p.nm}</div><div class="pr num">${p.soldout?'품절':won(p.pr)}${p.was?`<s>${won(p.was)}</s>`:''}</div></div></a>`;
+}
+$('#picks').innerHTML = [P[5],P[0],P[1],P[3],P[2]].map((p,i)=>card(p,i===0)).join('');
+const jrow = j => `<a href="#brand-journal"><div class="jimg"><img class="photo" src="${U(j.img,600)}" alt=""></div><div><h3>${j.t}</h3><p>${j.d}</p></div><span class="when">${j.w}</span></a>`;
+$('#journalHome').innerHTML = J.slice(0,2).map(jrow).join('');
+$('#journalAll').innerHTML = J.map(jrow).join('');
+$('#fac').innerHTML = FAC.map(f=>`<div><button type="button" data-fac="${f.k}" aria-label="${f.nm} 자세히 보기">${f.img?`<div class="fimg"><img src="${U(f.img,1200)}" alt=""></div>`:`<div class="ph">사진 준비 중</div>`}<div class="cap"><b>${f.nm}</b><span><span class="chip ${f.img?'info':'neu'}">${f.st}</span></span></div></button></div>`).join('');
+
+/* 샵 목록 */
+function renderShop(){
+  $('#cats').innerHTML = CATS.map(([k,l])=>`<button type="button" data-cat="${k}" aria-pressed="${k===cat}">${l}<span class="num">${k==='all'?P.length:P.filter(p=>p.cat===k).length}</span></button>`).join('');
+  let list = P.filter(p=>cat==='all'||p.cat===cat);
+  if(sort==='low') list=[...list].sort((a,b)=>a.pr-b.pr);
+  if(sort==='high') list=[...list].sort((a,b)=>b.pr-a.pr);
+  $('#grid').innerHTML = list.map(p=>card(p)).join('');
+  $('#count').textContent = `상품 ${list.length}개`;
+  $('#empty').hidden = list.length>0;
+}
+document.addEventListener('click', e=>{
+  const c = e.target.closest('[data-cat]'); if(c){ cat=c.dataset.cat; renderShop(); }
+});
+$('#sort').addEventListener('change', e=>{ sort=e.target.value; renderShop(); });
+
+/* 상세 */
+function renderProduct(id){
+  cur = P.find(p=>p.id===id) || P[0]; color=0; size=0; qty=1;
+  $('#pdCat').textContent = CATS.find(c=>c[0]===cur.cat)[1];
+  $('#pdName').textContent = cur.nm;
+  $('#pdPrice').textContent = won(cur.pr);
+  $('#pdDesc').textContent = cur.desc;
+  const b=$('#pdBadge'); b.hidden=!cur.badge; b.textContent=cur.badge||''; b.className='chip '+(cur.badge==='촬영 전'?'neu':'ok');
+  const imgs = cur.img.length ? cur.img : [null];
+  const setMain = i => { $('#pdPh').hidden = !!imgs[i]; const m=$('#pdMain'); if(imgs[i]){ m.src=U(imgs[i],1400); m.alt=cur.nm; m.style.display=''; m.parentElement.classList.remove('ph'); } else { m.removeAttribute('src'); m.style.display='none'; m.parentElement.classList.add('ph'); } $$('#pdThumbs button').forEach((t,j)=>t.setAttribute('aria-pressed', j===i)); };
+  $('#pdThumbs').innerHTML = imgs.length>1 ? imgs.map((x,i)=>`<button type="button" aria-label="사진 ${i+1}" aria-pressed="${i===0}"><img src="${U(x,200)}" alt=""></button>`).join('') : '';
+  $$('#pdThumbs button').forEach((t,i)=>t.onclick=()=>setMain(i));
+  setMain(0);
+  $('#pdColors').innerHTML = cur.colors.map((c,i)=>`<button type="button" aria-pressed="${i===0}" data-color="${i}">${c}</button>`).join('');
+  $('#pdSizes').innerHTML = cur.sizes.map((s,i)=>`<button type="button" aria-pressed="${i===0}" data-size="${i}" ${cur.id==='waffle'&&i===1?'disabled title="품절"':''}>${s}${cur.id==='waffle'&&i===1?' · 품절':''}</button>`).join('');
+  $('#pdColorName').textContent = cur.colors[0];
+  const so = !!cur.soldout;
+  $('#addCart').disabled = so; $('#buyNow').disabled = so; $('#mbarBtn').disabled = so;
+  $('#buyNow').textContent = so ? '품절' : '바로 구매';
+  updQty(); selectTab('t1');
+}
+function updQty(){
+  $('#qVal').textContent = qty; $('#qMinus').disabled = qty<=1;
+  $('#pdTotal').textContent = won(cur.pr*qty); $('#mbarP').textContent = won(cur.pr*qty);
+}
+$('#pdColors').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; color=+b.dataset.color; $$('#pdColors button').forEach(x=>x.setAttribute('aria-pressed', x===b)); $('#pdColorName').textContent=cur.colors[color]; });
+$('#pdSizes').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b||b.disabled) return; size=+b.dataset.size; $$('#pdSizes button').forEach(x=>x.setAttribute('aria-pressed', x===b)); });
+$('#qMinus').onclick=()=>{ if(qty>1){qty--; updQty();} };
+$('#qPlus').onclick=()=>{ if(qty<9){qty++; updQty();} };
+function add(){ const f=cart.find(x=>x.id===cur.id&&x.c===color&&x.s===size); if(f) f.q+=qty; else cart.push({id:cur.id,c:color,s:size,q:qty}); updCount(); toast(`${cur.nm} ${qty}개를 담았어요`); }
+$('#addCart').onclick=add; $('#mbarBtn').onclick=add;
+$('#buyNow').onclick=()=>{ add(); location.hash='#cart/checkout'; };
+function selectTab(id){ $$('.tabs button').forEach(b=>b.setAttribute('aria-selected', b.dataset.tab===id)); ['t1','t2','t3','t4'].forEach(t=>$('#'+t).hidden = t!==id); }
+$$('.tabs button').forEach(b=>b.onclick=()=>selectTab(b.dataset.tab));
+
+/* 장바구니 */
+function updCount(){ const n=cart.reduce((a,x)=>a+x.q,0); const c=$('#cartCount'); c.textContent=n; c.hidden=n===0; }
+function renderCart(checkout){
+  const has = cart.length>0;
+  $('#cartTitle').textContent = checkout && has ? '주문서' : '장바구니';
+  $('#cartEmpty').hidden = has; $('#cartAside').hidden = !has;
+  $('#checkout').hidden = !(checkout && has);
+  $('#cartList').innerHTML = cart.map((x,i)=>{ const p=P.find(q=>q.id===x.id); return `<div class="line-item"><div class="li-img">${p.img.length?`<img src="${U(p.img[0],300)}" alt="">`:''}</div><div><div class="top"><div><div class="nm">${p.nm}</div><div class="op">${p.colors[x.c]} · ${p.sizes[x.s]}</div></div>${checkout?'':`<button class="x" type="button" data-rm="${i}" aria-label="${p.nm} 빼기"><svg class="ico ico-s"><use href="#i-x"/></svg></button>`}</div><div class="bot">${checkout?`<span class="mut small num">${x.q}개</span>`:`<div class="qty"><button type="button" data-dq="${i}" aria-label="수량 줄이기" ${x.q<=1?'disabled':''}><svg class="ico ico-s"><use href="#i-minus"/></svg></button><output class="num">${x.q}</output><button type="button" data-iq="${i}" aria-label="수량 늘리기"><svg class="ico ico-s"><use href="#i-plus"/></svg></button></div>`}<b class="num">${won(p.pr*x.q)}</b></div></div></div>`; }).join('');
+  const sub = cart.reduce((a,x)=>a+P.find(q=>q.id===x.id).pr*x.q,0);
+  const ship = sub>=50000||sub===0 ? 0 : 3000;
+  $('#sSub').textContent=won(sub); $('#sShip').textContent= ship?won(ship):'무료'; $('#sTot').textContent=won(sub+ship);
+  $('#sFreeTxt').textContent = sub>=50000 ? '무료 배송이에요' : `${won(50000-sub)} 더 담으면 무료 배송`;
+  $('#sBar').style.width = Math.min(100, sub/500) + '%';
+  $('#orderBtn').textContent = checkout ? `${won(sub+ship)} 결제하기` : '주문하기';
+  updCount();
+}
+$('#cartList').addEventListener('click', e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.rm!==undefined){ cart.splice(+b.dataset.rm,1); toast('장바구니에서 뺐어요'); }
+  if(b.dataset.iq!==undefined){ cart[+b.dataset.iq].q++; }
+  if(b.dataset.dq!==undefined){ const x=cart[+b.dataset.dq]; if(x.q>1) x.q--; }
+  renderCart(false);
+});
+$('#orderBtn').onclick=()=>{
+  if(location.hash!=='#cart/checkout'){ location.hash='#cart/checkout'; return; }
+  let ok=true;
+  [['f-name',v=>v.trim().length>0,'oName'],['f-tel',v=>/^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(v.trim()),'oTel'],['f-addr',v=>v.trim().length>3,'oAddr']].forEach(([f,t,i])=>{ const g=t($('#'+i).value); $('#'+f).classList.toggle('bad',!g); if(!g&&ok){ $('#'+i).focus(); } ok=ok&&g; });
+  if(!ok){ toast('빠진 칸을 확인해 주세요'); return; }
+  if(!$('#agree').checked){ toast('결제 동의에 체크해 주세요'); return; }
+  toast('시안이라 실제 결제는 진행되지 않아요');
+};
+
+/* 로그인 */
+$$('[data-auth]').forEach(b=>b.onclick=()=>{ const up=b.dataset.auth==='up'; $$('[data-auth]').forEach(x=>x.setAttribute('aria-selected', x===b)); $('#fIn').hidden=up; $('#fUp').hidden=!up; });
+const mailOk = v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+$('#fIn').onsubmit=e=>{ e.preventDefault(); const a=mailOk($('#lMail').value), b=$('#lPw').value.length>0; $('#l-mail').classList.toggle('bad',!a); $('#l-pw').classList.toggle('bad',!b); if(a&&b){ toast('로그인했어요 (시안)'); location.hash='#my'; } };
+$('#uAll').onchange=e=>$$('#fUp .chk input').forEach(i=>i.checked=e.target.checked);
+$('#fUp').onsubmit=e=>{ e.preventDefault(); const a=$('#uName').value.trim().length>0, b=mailOk($('#uMail').value), c=$('#uPw').value.length>=8; $('#u-name').classList.toggle('bad',!a); $('#u-mail').classList.toggle('bad',!b); $('#u-pw').classList.toggle('bad',!c); if(!(a&&b&&c)) return; if(!$$('.uReq').every(i=>i.checked)){ toast('필수 약관에 동의해 주세요'); return; } toast('가입했어요 (시안)'); location.hash='#my'; };
+$$('.sns button').forEach(b=>b.onclick=()=>toast('간편 로그인은 아임웹 설정 후 연결돼요'));
+
+/* 마이페이지 */
+const O = [
+  {no:'20261018-0012', d:'10월 18일', p:'robe-w', n:'와플 로브 외 1건', amt:136000, st:['배송 중','info'], step:3},
+  {no:'20261002-0031', d:'10월 2일', p:'waffle', n:'와플 사우나 타월', amt:38000, st:['배송 완료','ok'], step:4},
+  {no:'20260911-0007', d:'9월 11일', p:'roll', n:'롤 핸드 타월 3장', amt:27000, st:['배송 완료','ok'], step:4}
+];
+$('#orders').innerHTML = O.map((o,i)=>{ const p=P.find(x=>x.id===o.p); return `<div class="order${i===0?' open':''}"><button type="button" aria-expanded="${i===0}"><div class="oi"><img src="${U(p.img[0],200)}" alt=""></div><div><div class="od num">${o.d} · ${o.no}</div><div class="on">${o.n}</div><span class="chip ${o.st[1]}">${o.st[0]}</span></div><svg class="ico chev"><use href="#i-down"/></svg></button><div class="ex"><ol class="track">${['결제 완료','상품 준비','배송 중','배송 완료'].map((s,j)=>`<li class="${j<o.step?'done':''}">${s}</li>`).join('')}</ol><p style="margin:0 0 12px">결제 금액 <b class="num">${won(o.amt)}</b></p><div class="acts">${o.step===3?'<button class="btn line" type="button" data-t="배송 조회는 택배사 화면으로 연결돼요">배송 조회</button>':'<button class="btn line" type="button" data-t="후기 쓰기 화면으로 이동해요 (시안)">후기 쓰기</button><button class="btn line" type="button" data-t="교환·반품 신청 화면으로 이동해요 (시안)">교환·반품</button>'}</div></div></div>`; }).join('');
+$('#orders').addEventListener('click', e=>{ const t=e.target.closest('[data-t]'); if(t){ toast(t.dataset.t); return; } const b=e.target.closest('.order > button'); if(!b) return; const o=b.parentElement; o.classList.toggle('open'); b.setAttribute('aria-expanded', o.classList.contains('open')); });
+$$('.my-tabs button').forEach(b=>b.onclick=()=>{ $$('.my-tabs button').forEach(x=>x.setAttribute('aria-selected', x===b)); if(b.textContent!=='주문 내역') toast(`'${b.textContent}' 화면은 아임웹 기본 화면을 따라가요`); });
+
+/* 팝업 */
+let lastFocus=null;
+function openDlg(html){ lastFocus=document.activeElement; $('#dlgBody').innerHTML=html; $('#dlg').classList.add('open'); document.body.style.overflow='hidden'; $('#dlgClose').focus(); }
+function closeDlg(){ $('#dlg').classList.remove('open'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+$('#dlgClose').onclick=closeDlg;
+$('#dlg').addEventListener('click', e=>{ if(e.target.id==='dlg') closeDlg(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeDlg(); closeSheet(); } });
+document.addEventListener('click', e=>{
+  const f=e.target.closest('[data-fac]');
+  if(f){ const x=FAC.find(q=>q.k===f.dataset.fac); openDlg(`${x.img?`<div class="pimg"><img src="${U(x.img,1400)}" alt="${x.nm} 참고 사진"></div>`:`<div class="pimg ph">사진 준비 중 · 설계 도면이 나오면 먼저 올려요</div>`}<span class="chip ${x.img?'info':'neu'}">${x.st}</span><h2 class="h-lg" id="dlgTitle" style="margin:12px 0 8px">${x.nm}</h2><p style="margin:0 0 20px;color:var(--ink-2)">${x.body}</p><dl class="info-tbl">${x.rows.map(r=>`<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl><p class="small mut" style="margin-top:12px">${x.img?'사진은 분위기 참고용 예시예요. 실제 공간 사진으로 바꿔요.':''}</p><p class="im" style="margin-top:8px">팝업 1개 = 이미지 + 텍스트 위젯 묶음. 정보가 바뀌면 이 팝업만 고치면 돼요</p>`); return; }
+  const n=e.target.closest('[data-open="notify"]');
+  if(n){ openDlg(`<h2 class="h-lg" id="dlgTitle" style="margin:0 0 8px">오픈 소식 받기</h2><p class="mut" style="margin:0 0 20px">공사 기록과 예약 오픈 날짜를 메일로 보내요. 한 달에 한 번 넘지 않아요.</p><form id="nf" novalidate><div class="fld" id="n-mail"><label for="nMail">이메일</label><input id="nMail" type="email" autocomplete="email" placeholder="name@example.com"><span class="err">이메일 형식을 확인해 주세요</span></div><label class="chk"><input type="checkbox" id="nAgree"> 소식 발송을 위한 이메일 수집에 동의해요</label><button class="btn block" type="submit" style="margin-top:8px">신청하기</button></form><p class="im" style="margin-top:16px">아임웹 입력폼 위젯. 제출 알림은 이메일·문자로 받을 수 있어요</p>`);
+    $('#nf').onsubmit=ev=>{ ev.preventDefault(); const ok=mailOk($('#nMail').value); $('#n-mail').classList.toggle('bad',!ok); if(!ok) return; if(!$('#nAgree').checked){ toast('수집 동의에 체크해 주세요'); return; } closeDlg(); toast('신청했어요. 첫 소식은 다음 달에 보내요 (시안)'); };
+    return; }
+  const x=e.target.closest('.ext-link');
+  if(x){ e.preventDefault(); closeSheet(); toast('외부 스토어(예: 스마트스토어)로 새 창이 열려요 (시안)'); }
+});
+
+/* 메뉴 */
+function closeSheet(){ $('#sheet').classList.remove('open'); $('#menuOpen').setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+$('#menuOpen').onclick=()=>{ $('#sheet').classList.add('open'); $('#menuOpen').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; $('#menuClose').focus(); };
+$('#menuClose').onclick=closeSheet;
+$$('#sheet a').forEach(a=>a.addEventListener('click', closeSheet));
+
+/* 모드·메모 */
+function setMode(m){ mode=m; document.body.classList.toggle('ext', m==='ext'); $$('[data-mode]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.mode===m)); try{localStorage.setItem('hs-mode',m);}catch(e){} const pg=(location.hash.slice(1).split('/')[0])||'home'; if(m==='ext' && ['cart','login','my'].includes(pg)) location.hash='#shop'; route(); }
+$$('[data-mode]').forEach(b=>b.onclick=()=>{ setMode(b.dataset.mode); toast(b.dataset.mode==='ext'?'외부 판매 연결형: 구매 버튼만 외부 스토어로 나가요':'통합형: 장바구니·결제·회원까지 사이트 안에서'); });
+$('#imToggle').onclick=e=>{ const off=document.body.classList.toggle('no-im'); e.currentTarget.setAttribute('aria-pressed', !off); e.currentTarget.textContent = off?'아임웹 메모 꺼짐':'아임웹 메모 켜짐'; };
+$('#jump').onchange=e=>{ location.hash = '#'+(e.target.value==='product'?'product/waffle':e.target.value); };
+
+let tt; function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2400); }
+
+/* 라우팅 */
+function route(){
+  let h = location.hash.slice(1) || 'home';
+  let anchor = null;
+  if(h==='brand-journal'){ h='brand'; anchor='brand-journal'; }
+  const [pg,arg] = h.split('/');
+  const name = document.querySelector(`[data-page="${pg}"]`) ? pg : 'home';
+  $$('.page').forEach(s=>s.classList.toggle('on', s.dataset.page===name));
+  $$('.nav a[data-nav]').forEach(a=>a.toggleAttribute('aria-current', a.dataset.nav===(anchor?'journal':name)));
+  $$('.nav a[aria-current]').forEach(a=>a.setAttribute('aria-current','page'));
+  $('#jump').value = name;
+  if(name==='shop') renderShop();
+  if(name==='product') renderProduct(arg||'waffle');
+  if(name==='cart') renderCart(arg==='checkout');
+  const mb = name==='product';
+  $('#mbar').classList.toggle('show', mb); document.body.classList.toggle('has-mbar', mb);
+  if(anchor){ requestAnimationFrame(()=>document.getElementById(anchor).scrollIntoView()); } else window.scrollTo(0,0);
+}
+addEventListener('hashchange', route);
+document.body.classList.toggle('ext', mode==='ext');
+$$('[data-mode]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.mode===mode));
+updCount(); route();
+})();
+</script>
+</body>
+</html>
