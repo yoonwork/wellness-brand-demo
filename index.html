@@ -408,9 +408,109 @@ legend{font-size:17px;font-weight:600;margin-bottom:16px;padding:0}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 body.has-mbar .toast{bottom:96px}
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+
+/* ===================== 2차 디자인 (참고: 모노톤 패션 앱 · 흑백 커피 앱 · Löyly · Othership · Tamburins) ===================== */
+:root{
+  --point:#E7E3DC; --point-ink:#35322D;
+  --info:#35322D; --info-bg:#E7E3DC; --info-dot:#35322D;
+  --r-img:16px; --r-card:24px;
+  --char:#24221F; --char-2:#34312D;
+}
+.logo{font-size:19px;font-weight:600;letter-spacing:.24em}
+.h-xl{font-size:36px;font-weight:700;letter-spacing:-.035em}
+.h-lg{font-size:28px;font-weight:700;letter-spacing:-.035em}
+@media (min-width:1024px){ .h-xl{font-size:64px;line-height:1.12} .h-lg{font-size:44px;line-height:1.18} }
+.btn.block,.mbar .btn{border-radius:var(--r-pill)}
+.btn.sm{height:40px;padding:0 18px;font-size:14px}
+
+/* 첫 화면: 둥근 안쪽 사진 + 차분한 톤 */
+.hero{margin:12px 12px 0;border-radius:var(--r-card);min-height:560px;height:calc(100svh - 150px);background:#2a2724}
+.hero img{filter:saturate(.72) brightness(.94)}
+.hero::after{background:linear-gradient(to top,rgba(24,22,20,.72) 0%,rgba(24,22,20,.30) 45%,rgba(24,22,20,.12) 100%)}
+.hero .wrap{max-width:none;padding-left:24px;padding-right:24px;padding-bottom:24px}
+.hero h1{font-size:40px;letter-spacing:-.04em}
+.hero-info{display:flex;flex-wrap:wrap;gap:4px 24px;margin:28px 0 0!important;padding-top:16px;border-top:1px solid rgba(255,255,255,.22);font-size:13px!important;color:rgba(255,255,255,.78)!important;max-width:none!important}
+@media (min-width:1024px){
+  .hero{margin:16px 24px 0;border-radius:32px;max-height:780px}
+  .hero .wrap{padding-left:56px;padding-right:56px;padding-bottom:40px}
+  .hero h1{font-size:76px;line-height:1.08}
+  .hero-info{justify-content:space-between}
+}
+
+/* 워드마크 + 모서리 + 표시 */
+.intro{padding-bottom:40px}
+.marks{position:relative;padding:40px 4px 8px}
+.marks::before,.marks::after{content:"+";position:absolute;top:0;font:300 22px/1 var(--font);color:var(--ink)}
+.marks::before{left:0} .marks::after{right:0}
+.wordmark{margin:0 0 32px;font-weight:300;font-size:clamp(48px,15vw,200px);line-height:.9;letter-spacing:.14em;text-align:center;color:var(--ink);white-space:nowrap;padding-left:.14em}
+@media (min-width:1024px){ .intro{padding-top:96px;padding-bottom:56px} .marks{padding:56px 8px 8px} .wordmark{margin-bottom:56px;letter-spacing:.2em;padding-left:.2em} }
+
+/* 흰 카드 + 검정 카드 한 쌍 */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pc{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:250px;padding:18px;border-radius:var(--r-card);overflow:hidden;text-decoration:none}
+.pc.light{background:var(--card);color:var(--ink)}
+.pc.dark{background:var(--char);color:#F3F0EA}
+.pc h2{font-size:24px;font-weight:700;letter-spacing:-.03em}
+.pc p{margin:2px 0 0;font-size:13px;opacity:.72}
+.pc img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-img);margin:16px 0 12px}
+.pc.dark img{filter:saturate(.6) brightness(.9)}
+.pc-f{font-size:12px;opacity:.62}
+.pc-f::before{content:"/ "}
+@media (min-width:768px){ .pair{gap:24px} .pc{padding:32px;min-height:0;display:grid;grid-template-columns:1fr 1.15fr;grid-template-rows:1fr auto;column-gap:24px} .pc h2{font-size:44px} .pc p{font-size:15px} .pc img{grid-row:span 2;grid-column:2;aspect-ratio:4/5;margin:0;order:2} .pc .pc-t{grid-column:1} .pc-f{grid-column:1;align-self:end;font-size:13px} }
+
+/* 순환 카드 + 뒤 큰 글자 */
+.ritual-card{position:relative;overflow:hidden;background:var(--card);border-radius:var(--r-card);padding:24px 20px 8px}
+.ritual-card .wm{position:absolute;left:16px;right:16px;bottom:-14px;font-weight:800;font-size:25vw;line-height:1;letter-spacing:-.04em;text-align:center;color:var(--ink);opacity:.05;pointer-events:none;white-space:nowrap}
+.ritual-card{padding-bottom:64px!important}
+.ritual .n{color:var(--ink)}
+.rc-head{position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px;margin-bottom:8px}
+.ritual-card .ritual{position:relative;border:0}
+@media (min-width:768px){ .ritual-card{padding:40px 40px 16px;margin-top:12px} .ritual-card{padding-bottom:150px!important} .ritual-card .wm{font-size:200px;bottom:-40px} .ritual-card .ritual > div:last-child{border-right:0} }
+
+/* 분류 동그라미 */
+.circles{display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gut)*-1) 24px;padding:0 var(--gut)}
+.circles::-webkit-scrollbar{display:none}
+.circles a{flex:none;display:grid;justify-items:center;gap:8px;text-decoration:none;font-size:14px;font-weight:600;min-width:72px}
+.circles span{width:72px;height:72px;border-radius:50%;overflow:hidden;background:var(--card);border:1px solid var(--line);display:grid;place-items:center}
+.circles img{width:100%;height:100%;object-fit:cover}
+.circles .ci-ph{display:grid!important;place-items:center;color:#2a2622}.circles .ci-ph.dark{background:#22201d!important;color:#f4f2ee;border-color:#22201d!important}
+@media (min-width:1024px){ .circles{gap:28px} .circles span{width:88px;height:88px} }
+
+/* 상품 카드: 밝은 카드 + 하나만 진한 카드 */
+.prod{background:var(--card);border-radius:var(--r-card);padding:8px 8px 16px}
+.prod .pimg{border-radius:var(--r-img)}
+.prod .meta{padding:12px 8px 0;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.prod.feat{background:var(--char);color:#F3F0EA}
+.prod.feat .pimg img{filter:saturate(.85)}
+.prod.feat .nm{font-size:20px;font-weight:600}
+.prod.feat .pr{font-size:17px}
+@media (min-width:1024px){ .picks .feat .pimg{height:calc(100% - 72px)} .prod{padding:10px 10px 18px} .prod .meta{padding:14px 8px 0} }
+.grid{gap:12px}
+@media (min-width:1024px){ .grid{gap:24px} }
+
+/* 공간 */
+.space-tease .pic,.space-tease .pic .photo{border-radius:var(--r-card)}
+.fac button{border-radius:var(--r-card);background:var(--card)}
+.fac .fimg,.fac .ph{border-radius:var(--r-card) var(--r-card) 0 0;overflow:hidden}
+.fac .cap{background:var(--card);padding:16px 20px 18px}
+.fac .cap span{font-weight:500}
+.fac .chip.on-img{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.92);color:var(--ink)}
+.fac .chip.on-img::before{background:var(--ink)}
+.fac .chip.on-img.neu{background:var(--card)}
+.resv{border-radius:var(--r-card);border:0}
+.box,.order{border-radius:var(--r-card)}
+.journal .jimg{border-radius:var(--r-img)}
+.fac .fimg img,.dlg .pimg img{filter:saturate(.8)}
+.gal .th button{border-radius:10px}
+@media (min-width:1024px){ .pinfo h1{font-size:34px;font-weight:700;letter-spacing:-.035em} .pinfo .price{font-size:26px} }
+@media (max-width:1023px){ .journal a{align-items:start} .journal .when{grid-column:2;margin-top:-8px} }
+.split .pic .photo,.gal .main{border-radius:var(--r-card)}
+.ph-hero{margin:12px 12px 0;border-radius:var(--r-card)}
+.ph-hero img{filter:saturate(.75)}
+@media (min-width:1024px){ .ph-hero{margin:16px 24px 0;border-radius:32px} }
 </style>
 </head>
-<body>
+<body class="no-im">
 
 <!-- 시안 안내 띠 -->
 <div class="demo" role="region" aria-label="시안 안내">
@@ -421,7 +521,7 @@ body.has-mbar .toast{bottom:96px}
         <button type="button" data-mode="int" aria-pressed="true">통합형</button>
         <button type="button" data-mode="ext" aria-pressed="false">외부 판매 연결형</button>
       </div>
-      <button type="button" class="tgl" id="imToggle" aria-pressed="true">아임웹 메모 켜짐</button>
+      <button type="button" class="tgl" id="imToggle" aria-pressed="false">아임웹 메모 꺼짐</button>
       <label class="sr" for="jump">화면 바로가기</label>
       <select id="jump">
         <option value="home">1 메인</option>
@@ -496,38 +596,73 @@ body.has-mbar .toast{bottom:96px}
         <a class="tlink only-int" href="#shop">타월 보러 가기</a>
         <a class="tlink only-ext ext-link" href="#">스토어 가기 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
       </div>
+      <p class="hero-info"><span>온라인 샵 · 평일 오후 2시 전 주문 당일 출고 (예시)</span><span>부산 공간 · 설계 중</span></p>
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec intro">
     <div class="wrap">
-      <p class="im">텍스트 위젯 2개를 그리드 8:4로 배치</p>
-      <div class="statement">
-        <p class="big">뜨거운 방에서 10분, 찬물에서 1분, 그리고 아무것도 하지 않는 10분. 한숨은 그 마지막 10분을 위한 물건과 공간을 만들어요.</p>
-        <div>
-          <p class="mut" style="margin:0 0 8px">2025년 서울에서 타월 한 장으로 시작했어요. 몸에 닿는 천과 쉬는 자리의 온도를 오래 고민해요.</p>
-          <a class="tlink" href="#brand">브랜드 이야기</a>
+      <div class="marks">
+        <p class="im">텍스트 위젯(글자 크기 크게, 자간 넓게) + 모서리 '+'는 작은 이미지 4개. 지우기 쉬움</p>
+        <p class="wordmark" aria-hidden="true">HANSUM</p>
+        <div class="statement">
+          <p class="big">뜨거운 방에서 10분, 찬물에서 1분, 그리고 아무것도 하지 않는 10분. 한숨은 그 마지막 10분을 위한 물건과 공간을 만들어요.</p>
+          <div>
+            <p class="mut" style="margin:0 0 8px">2025년 서울에서 타월 한 장으로 시작했어요. 몸에 닿는 천과 쉬는 자리의 온도를 오래 고민해요.</p>
+            <a class="tlink" href="#brand">브랜드 이야기</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="wrap">
-    <p class="im">텍스트 위젯 3열 그리드 (모바일 1열로 쌓임). 큰 숫자는 글자 크기만 키움</p>
-    <div class="ritual" aria-label="한 번의 순환">
-      <div><p class="n num">10<small>분</small></p><div><h3>덥히기</h3><p>80~90도 건식 사우나에서 땀이 날 때까지.</p></div></div>
-      <div><p class="n num">1<small>분</small></p><div><h3>식히기</h3><p>찬물이나 찬 샤워로 숨을 고르며.</p></div></div>
-      <div><p class="n num">10<small>분</small></p><div><h3>쉬기</h3><p>로브를 걸치고, 휴대폰은 내려두고.</p></div></div>
+    <p class="im">이미지 위젯 2개를 1:1 그리드로. 왼쪽 흰 바탕, 오른쪽 검정 바탕 (섹션 안 박스 배경색)</p>
+    <div class="pair">
+      <a class="pc light only-int" href="#shop"><div class="pc-t"><h2>샵</h2><p>타월 · 로브 · 사우나 햇</p></div><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=900&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"><span class="pc-f">집에서도 사우나처럼</span></a>
+      <a class="pc light only-ext ext-link" href="#"><div class="pc-t"><h2>스토어</h2><p>타월 · 로브 · 사우나 햇</p></div><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=900&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"><span class="pc-f">외부 스토어로 이동해요 <svg class="ico ico-s" style="vertical-align:-3px"><use href="#i-ext"/></svg></span></a>
+      <a class="pc dark" href="#space"><div class="pc-t"><h2>공간</h2><p>부산 · 준비 중</p></div><img src="https://images.unsplash.com/photo-1604609165742-58e1b9cf0457?w=900&q=72&auto=format&fit=crop" alt="물가 바위 위의 작은 나무 사우나"><span class="pc-f">설계 단계예요</span></a>
     </div>
-    <p class="small mut" style="margin:12px 0 0">시간은 일반적인 예시예요. 몸 상태에 맞게 줄여 주세요.</p>
+  </div>
+
+  <div class="wrap" style="margin-top:12px">
+    <p class="im">텍스트 위젯 3열 그리드 (모바일 1열로 쌓임). 뒤의 큰 글자는 배경 이미지 한 장</p>
+    <div class="ritual-card">
+      <span class="wm" aria-hidden="true">10·1·10</span>
+      <div class="rc-head"><h2 class="h-md">한 번의 순환</h2><span class="small mut">시간은 일반적인 예시예요. 몸 상태에 맞게 줄여 주세요.</span></div>
+      <div class="ritual" aria-label="한 번의 순환">
+        <div><p class="n num">10<small>분</small></p><div><h3>덥히기</h3><p>80~90도 건식 사우나에서 땀이 날 때까지.</p></div></div>
+        <div><p class="n num">1<small>분</small></p><div><h3>식히기</h3><p>찬물이나 찬 샤워로 숨을 고르며.</p></div></div>
+        <div><p class="n num">10<small>분</small></p><div><h3>쉬기</h3><p>로브를 걸치고, 휴대폰은 내려두고.</p></div></div>
+      </div>
+    </div>
   </div>
 
   <div class="sec">
     <div class="wrap">
+      <p class="im only-int">쇼핑 위젯(상품 목록) — PC는 큰 상품 1 + 작은 상품 4, 모바일은 가로로 넘기기 (배치 가능 여부 확인 필요)</p>
+      <p class="im only-ext">이미지 + 버튼 위젯. 버튼 링크를 외부 스토어 상품 주소로 연결</p>
+      <div class="sec-head">
+        <h2 class="h-lg">쉬는 시간에 쓰는 것들</h2>
+        <a class="tlink only-int" href="#shop">전체 보기</a>
+        <a class="tlink only-ext ext-link" href="#">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
+      </div>
+      <div class="circles only-int" role="group" aria-label="분류 바로가기">
+        <a href="#shop" data-cat="towel"><span><img src="https://images.unsplash.com/photo-1638232928539-6e91c47ddec5?w=240&q=70&auto=format&fit=crop" alt=""></span>타월</a>
+        <a href="#shop" data-cat="robe"><span><img src="https://images.unsplash.com/photo-1780571525506-67e3bb9ca947?w=240&q=70&auto=format&fit=crop" alt=""></span>로브</a>
+        <a href="#shop" data-cat="hat"><span class="ci-ph" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 14.5 8.6 7.2A1.5 1.5 0 0 1 10.1 6h3.8a1.5 1.5 0 0 1 1.5 1.2l1.1 7.3"/><path d="M3 15.2c1.2 2 16.8 2 18 0-1.6-.9-4.2-1.3-4.5-1.3H7.5c-.3 0-2.9.4-4.5 1.3Z"/></svg></span>모자</a>
+        <a href="#shop" data-cat="set"><span class="ci-ph dark" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11"/><path d="M12 9c-2-3.5-5.5-3.5-5.5-1.5S9.5 9 12 9c2.5 0 5.5 0 5.5-1.5S14 5.5 12 9"/></svg></span>세트</a>
+      </div>
+      <div class="picks" id="picks"></div>
+    </div>
+  </div>
+
+  <div class="sec" style="padding-top:0">
+    <div class="wrap">
       <div class="space-tease">
         <div class="pic">
           <p class="im on-photo" style="left:12px">이미지 위젯 (크게) — 공간 사진이 생기면 이 자리만 바꿔요</p>
-          <img class="photo" src="https://images.unsplash.com/photo-1779966731482-e5e3e104570a?w=1400&q=72&auto=format&fit=crop" alt="잔잔한 바다와 멀리 떠 있는 작은 배">
+          <img class="photo" src="https://images.unsplash.com/photo-1604609165678-096d20fab1ad?w=1400&q=72&auto=format&fit=crop" alt="바닷가 바위 위에 선 작은 나무 사우나">
         </div>
         <div>
           <span class="chip info">부산 · 준비 중</span>
@@ -544,19 +679,6 @@ body.has-mbar .toast{bottom:96px}
           <p class="im" style="margin-top:16px">'오픈 소식 받기' = 아임웹 입력폼 위젯을 팝업으로 연결 (팝업 방식 확인 필요)</p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="sec" style="padding-top:0">
-    <div class="wrap">
-      <p class="im only-int">쇼핑 위젯(상품 목록) — PC는 큰 상품 1 + 작은 상품 4, 모바일은 가로로 넘기기 (배치 가능 여부 확인 필요)</p>
-      <p class="im only-ext">이미지 + 버튼 위젯. 버튼 링크를 외부 스토어 상품 주소로 연결</p>
-      <div class="sec-head">
-        <h2 class="h-lg">쉬는 시간에 쓰는 것들</h2>
-        <a class="tlink only-int" href="#shop">전체 보기</a>
-        <a class="tlink only-ext ext-link" href="#">스토어 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
-      </div>
-      <div class="picks" id="picks"></div>
     </div>
   </div>
 
@@ -587,7 +709,7 @@ body.has-mbar .toast{bottom:96px}
   </div>
   <div class="wrap">
     <div class="split">
-      <div class="pic"><img class="photo" src="https://images.unsplash.com/photo-1678988227223-45112511eca2?w=1000&q=72&auto=format&fit=crop" alt="나무 사우나 벤치 위 검은 물통과 나무 국자"></div>
+      <div class="pic"><img class="photo" src="https://images.unsplash.com/photo-1761621711779-faf78317babd?w=1000&q=72&auto=format&fit=crop" alt="따뜻한 빛이 드는 나무 사우나 앞에 걸린 흰 와플 타월"></div>
       <div>
         <p class="im">텍스트 위젯 + 표 대신 '목록' 스타일 텍스트 (줄 구분선은 섹션 안 구분선 위젯)</p>
         <h2 class="h-lg" style="margin-bottom:24px">우리가 지키는 것</h2>
@@ -826,12 +948,13 @@ body.has-mbar .toast{bottom:96px}
       <div><i style="background:#F6F4F0;border-bottom:1px solid var(--line)"></i><p>바탕<br><code>#F6F4F0</code></p></div>
       <div><i style="background:#1F1E1C"></i><p>글자·주요 버튼<br><code>#1F1E1C</code></p></div>
       <div><i style="background:#6B675F"></i><p>보조 글자<br><code>#6B675F</code></p></div>
-      <div><i style="background:#DCE6EA"></i><p>포인트 바탕<br><code>#DCE6EA</code></p></div>
+      <div><i style="background:#24221F"></i><p>진한 카드<br><code>#24221F</code></p></div>
     </div>
     <h2 class="h-md">글자 크기 (PC / 모바일)</h2>
     <div class="type-scale" style="margin:16px 0 48px">
-      <div><code>제목 52 / 32</code><span style="font-size:32px;font-weight:700;letter-spacing:-.025em">한숨 부산</span></div>
-      <div><code>구역 제목 32 / 24</code><span style="font-size:24px;font-weight:700">쉬는 시간에 쓰는 것들</span></div>
+      <div><code>제목 64 / 36</code><span style="font-size:36px;font-weight:700;letter-spacing:-.035em">한숨 부산</span></div>
+      <div><code>구역 제목 44 / 28</code><span style="font-size:28px;font-weight:700;letter-spacing:-.035em">쉬는 시간에 쓰는 것들</span></div>
+      <div><code>워드마크 200 / 58 (얇게, 자간 넓게)</code><span style="font-size:26px;font-weight:300;letter-spacing:.2em">HANSUM</span></div>
       <div><code>본문 17 / 17</code><span style="font-size:17px">바다 가까운 골목에 사우나 두 칸</span></div>
       <div><code>보조 13 / 13</code><span style="font-size:13px" class="mut">시간은 일반적인 예시예요</span></div>
     </div>
@@ -865,7 +988,7 @@ body.has-mbar .toast{bottom:96px}
       <ul><li><a href="#brand">브랜드</a></li><li><a href="#space">공간</a></li><li><a href="#brand-journal">저널</a></li><li class="only-int"><a href="#shop">샵</a></li></ul>
       <ul><li><a href="#login" class="only-int">로그인</a></li><li><a href="#my" class="only-int">주문 조회</a></li><li><a href="#handoff">인계 자료 예시</a></li></ul>
     </div>
-    <p class="credit">사진: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — Clay Banks, HUUM, Lukas Kubica, Auroom Wellness, Anna Rafal, Mads Leif Hansen, Florencia Simonini, MADEINEGYPT.CA, engin akyurt, Grace Anne Bobadilla, Anastase Maragos, Natalia Marcelewicz. 브랜드·상품·가격·후기는 모두 시안용 예시예요.</p>
+    <p class="credit">사진: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — Clay Banks, HUUM, Auroom Wellness, Atle Mo, Denis Gorbuleac, Polina Kuzovkova, HANVIN CHEONG, Anne Nygård, Taylor Mackenzie, Mads Leif Hansen, Florencia Simonini, MADEINEGYPT.CA, engin akyurt, Grace Anne Bobadilla, Anastase Maragos, Natalia Marcelewicz. 브랜드·상품·가격·후기는 모두 시안용 예시예요.</p>
   </div>
 </footer>
 
@@ -888,8 +1011,8 @@ const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 
 const P = [
-  {id:'waffle', cat:'towel', nm:'와플 사우나 타월', pr:38000, img:['1760722974657-f64bce2f9cc5','1786799966417-bead801334e7','1684248655527-46bee8e79029'], colors:['오트','차콜'], sizes:['70×140','90×180'], badge:'신상품', desc:'벌집 모양 짜임이라 가볍고 빨리 말라요. 사우나 벤치에 깔고 앉아도, 나와서 몸을 감싸도 좋은 크기예요.'},
-  {id:'stripe', cat:'towel', nm:'스트라이프 벤치 타월', pr:42000, img:['1786800093023-33e6b7b6e847','1786799966417-bead801334e7'], colors:['먹색'], sizes:['60×160'], desc:'벤치에 길게 깔고 쓰는 타월이에요.'},
+  {id:'waffle', cat:'towel', nm:'와플 사우나 타월', pr:38000, img:['1760722974657-f64bce2f9cc5','1761621711779-faf78317babd','1684248655527-46bee8e79029'], colors:['오트','차콜'], sizes:['70×140','90×180'], badge:'신상품', desc:'벌집 모양 짜임이라 가볍고 빨리 말라요. 사우나 벤치에 깔고 앉아도, 나와서 몸을 감싸도 좋은 크기예요.'},
+  {id:'stripe', cat:'towel', nm:'스트라이프 벤치 타월', pr:42000, img:['1786799966417-bead801334e7'], colors:['먹색'], sizes:['60×160'], desc:'벤치에 길게 깔고 쓰는 타월이에요.'},
   {id:'heavy', cat:'towel', nm:'헤비 코튼 바스 타월', pr:32000, img:['1638232928539-6e91c47ddec5'], colors:['그레이','화이트'], sizes:['80×150'], desc:'두껍고 묵직한 바스 타월이에요.'},
   {id:'roll', cat:'towel', nm:'롤 핸드 타월 3장', pr:24000, was:30000, img:['1684248655527-46bee8e79029'], colors:['내추럴'], sizes:['34×80'], desc:'손과 얼굴에 쓰는 작은 타월 3장 묶음이에요.'},
   {id:'face', cat:'towel', nm:'투톤 페이스 타월 2장', pr:19000, img:['1650481093978-6cc58e4649f4'], colors:['플럼·그레이'], sizes:['40×80'], soldout:true, desc:'두 가지 색을 한 장씩 담았어요.'},
@@ -899,15 +1022,15 @@ const P = [
 ];
 const CATS = [['all','전체'],['towel','타월'],['robe','로브'],['hat','모자'],['set','세트']];
 const J = [
-  {t:'처음 사우나에 가는 분께', d:'몇 분 앉아 있어야 할까? 물은 언제 마실까? 처음이라면 이것만 기억해요.', w:'사우나 이야기 · 10월 14일 (예시)', img:'1656416212216-cf05b2af2650'},
-  {t:'부산에서 찾은 첫 번째 자리', d:'바다까지 걸어서 7분. 아직 계약 전이라 이름은 비밀이에요.', w:'공간 기록 · 9월 28일 (예시)', img:'1779966731482-e5e3e104570a'},
+  {t:'처음 사우나에 가는 분께', d:'몇 분 앉아 있어야 할까? 물은 언제 마실까? 처음이라면 이것만 기억해요.', w:'사우나 이야기 · 10월 14일 (예시)', img:'1567110973513-2a239896072e', pos:'center 88%'},
+  {t:'부산에서 찾은 첫 번째 자리', d:'바다까지 걸어서 7분. 아직 계약 전이라 이름은 비밀이에요.', w:'공간 기록 · 9월 28일 (예시)', img:'1763689389852-3f050e1750a3'},
   {t:'로브를 고르는 세 가지 기준', d:'무게, 소매 길이, 그리고 마르는 시간.', w:'제품 노트 · 9월 2일 (예시)', img:'1767614580100-77aa92204e18'}
 ];
 const FAC = [
-  {k:'sauna', nm:'건식 사우나', st:'설계 중', img:'1757940661240-f2e8d2ff93bf', body:'6명이 앉는 작은 방 두 칸. 한 칸은 낮은 온도로 오래 앉아 있을 수 있게 만들 예정이에요.', rows:[['크기','2칸 · 각 6인 (예정)'],['온도','80~90도 / 65~70도 (예정)'],['향','편백 · 계절마다 바꿈 (검토 중)']]},
-  {k:'cold', nm:'냉탕', st:'설계 중', img:'1712659606957-b7395ba9ebb2', body:'한 번에 두 명이 들어가는 깊은 냉탕이에요. 찬물이 어려운 분을 위한 찬 샤워도 옆에 둬요.', rows:[['수온','14~16도 (예정)'],['깊이','어깨까지 (예정)']]},
+  {k:'sauna', nm:'건식 사우나', st:'설계 중', img:'1770573319864-b3513c899089', body:'6명이 앉는 작은 방 두 칸. 한 칸은 낮은 온도로 오래 앉아 있을 수 있게 만들 예정이에요.', rows:[['크기','2칸 · 각 6인 (예정)'],['온도','80~90도 / 65~70도 (예정)'],['향','편백 · 계절마다 바꿈 (검토 중)']]},
+  {k:'cold', nm:'냉탕', st:'설계 중', img:'1785962580791-e8fa3bb36132', body:'한 번에 두 명이 들어가는 깊은 냉탕이에요. 찬물이 어려운 분을 위한 찬 샤워도 옆에 둬요.', rows:[['수온','14~16도 (예정)'],['깊이','어깨까지 (예정)']]},
   {k:'shower', nm:'샤워·파우더 룸', st:'사진 준비 중', img:'', body:'아직 보여드릴 사진이 없어요. 설계가 끝나면 도면 그림부터 먼저 올릴게요.', rows:[['구성','샤워 부스 · 파우더 룸 (예정)']]},
-  {k:'lounge', nm:'휴식 라운지', st:'설계 중', img:'1728404259075-209cfb5bb89c', body:'창 쪽으로 낮은 의자를 두고, 말없이 앉아 있을 수 있는 자리예요. 차와 물은 자유롭게 드세요.', rows:[['좌석','8석 (예정)'],['음료','보리차 · 물 (예정)']]}
+  {k:'lounge', nm:'휴식 라운지', st:'설계 중', img:'1668277155756-0ebb2801f6b4', body:'창 쪽으로 낮은 의자를 두고, 말없이 앉아 있을 수 있는 자리예요. 차와 물은 자유롭게 드세요.', rows:[['좌석','8석 (예정)'],['음료','보리차 · 물 (예정)']]}
 ];
 
 let cat='all', sort='new', cur=P[0], color=0, size=0, qty=1;
@@ -918,13 +1041,13 @@ try{ mode = localStorage.getItem('hs-mode')==='ext' ? 'ext' : 'int'; }catch(e){}
 function prodImg(p,w){ return p.img.length ? `<img src="${U(p.img[0],w)}" alt="${p.nm}">` : `<div class="ph" style="position:absolute;inset:0">${p.nm}<br>촬영 전 자리</div>`; }
 function card(p, feat){
   const chip = p.soldout ? '<span class="chip neu">품절</span>' : (p.badge ? `<span class="chip ${p.badge==='촬영 전'?'neu':'ok'}">${p.badge}</span>` : '');
-  return `<a class="prod${feat?' feat':''}${p.soldout?' soldout':''}" href="#product/${p.id}"><div class="pimg">${prodImg(p, feat?1200:700)}${chip}</div><div class="meta"><div class="nm">${p.nm}</div><div class="pr num">${p.soldout?'품절':won(p.pr)}${p.was?`<s>${won(p.was)}</s>`:''}</div></div></a>`;
+  return `<a class="prod${feat?' feat':''}${p.soldout?' soldout':''}" href="#product/${p.id}"><div class="pimg">${prodImg(p, feat?1200:700)}${chip}</div><div class="meta"><div><div class="nm">${p.nm}</div><div class="pr num">${p.soldout?'품절':won(p.pr)}${p.was?`<s>${won(p.was)}</s>`:''}</div></div>${feat?'<span class="btn light sm">자세히 보기</span>':''}</div></a>`;
 }
 $('#picks').innerHTML = [P[5],P[0],P[1],P[3],P[2]].map((p,i)=>card(p,i===0)).join('');
-const jrow = j => `<a href="#brand-journal"><div class="jimg"><img class="photo" src="${U(j.img,600)}" alt=""></div><div><h3>${j.t}</h3><p>${j.d}</p></div><span class="when">${j.w}</span></a>`;
+const jrow = j => `<a href="#brand-journal"><div class="jimg"><img class="photo" src="${U(j.img,600)}" alt="" style="object-position:${j.pos||'center'}"></div><div><h3>${j.t}</h3><p>${j.d}</p></div><span class="when">${j.w}</span></a>`;
 $('#journalHome').innerHTML = J.slice(0,2).map(jrow).join('');
 $('#journalAll').innerHTML = J.map(jrow).join('');
-$('#fac').innerHTML = FAC.map(f=>`<div><button type="button" data-fac="${f.k}" aria-label="${f.nm} 자세히 보기">${f.img?`<div class="fimg"><img src="${U(f.img,1200)}" alt=""></div>`:`<div class="ph">사진 준비 중</div>`}<div class="cap"><b>${f.nm}</b><span><span class="chip ${f.img?'info':'neu'}">${f.st}</span></span></div></button></div>`).join('');
+$('#fac').innerHTML = FAC.map(f=>`<div><button type="button" data-fac="${f.k}" aria-label="${f.nm} 자세히 보기">${f.img?`<div class="fimg"><img src="${U(f.img,1200)}" alt=""></div>`:`<div class="ph">사진 준비 중</div>`}<span class="chip on-img ${f.img?'info':'neu'}">${f.st}</span><div class="cap"><b>${f.nm}</b><span>자세히 보기</span></div></button></div>`).join('');
 
 /* 샵 목록 */
 function renderShop(){
