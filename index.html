@@ -7,6 +7,8 @@
 <meta name="description" content="사우나·휴식 웰니스 브랜드의 아임웹 기반 공식 사이트 제안용 디자인 시안입니다. 가상 브랜드이며 모든 내용은 예시입니다.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F1E1C'/%3E%3Cpath d='M9 22c3-2 4-6 7-6s4 4 7 6' stroke='%23F6F4F0' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..700&display=swap">
 <style id="tokens">
 :root{
   color-scheme: light;
@@ -508,6 +510,164 @@ body.has-mbar .toast{bottom:96px}
 .ph-hero{margin:12px 12px 0;border-radius:var(--r-card)}
 .ph-hero img{filter:saturate(.75)}
 @media (min-width:1024px){ .ph-hero{margin:16px 24px 0;border-radius:32px} }
+
+/* ===================== 3차 디자인: 프리미엄 에디토리얼 · 흑백 =====================
+   출처(무드보드 번호): 거대 워드마크 1·2·4·23 / 흑백 사진 3·5·15 / 검정 띠 7·11·12 / 겹친 사진·원형 배지 9·6 / 흰·검 카드 22·23 / 제품 카드 17·18 */
+:root{
+  --bg:#EDEBE6; --card:#FAF9F7; --soft:#E3E0DA; --line:#D6D2CA;
+  --ink:#121211; --ink-2:#3B3936; --mut:#66625B; --mut-2:#9A958C; --stone:#86817A;
+  --char:#121211; --char-2:#1E1D1B;
+  --point:#E3E0DA; --point-ink:#2A2825; --info:#2A2825; --info-bg:#E3E0DA; --info-dot:#121211;
+  --disp:"Archivo",var(--font);
+}
+body{background:var(--bg)}
+.hd{background:rgba(237,235,230,.94);border-bottom-color:transparent;backdrop-filter:saturate(1.2) blur(8px)}
+.logo{font-family:var(--disp);font-stretch:125%;font-weight:700;letter-spacing:.06em;font-size:18px}
+.logo small{font-family:var(--font);font-stretch:100%;letter-spacing:0;font-weight:500}
+.nav a{font-size:14px;font-weight:600;color:var(--ink)}
+.nav a[aria-current="page"]{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn.ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.btn.line{border-color:var(--ink)}
+.btn.line:hover{background:var(--ink);color:#fff}
+.eyebrow{margin:0 0 20px;font:600 13px/1 var(--font);color:var(--ink);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--ink)}
+
+/* 첫 화면 */
+.hero3{position:relative;margin:8px 8px 0;border-radius:20px;overflow:hidden;background:#151514;color:#fff;min-height:560px;height:calc(100svh - 230px);max-height:900px;isolation:isolate}
+.h3img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 30%;filter:grayscale(1) contrast(1.12) brightness(.86);z-index:-2}
+.hero3::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.05) 30%,rgba(10,10,10,.1) 55%,rgba(10,10,10,.7) 100%)}
+.h3top{display:flex;justify-content:space-between;gap:12px;padding:20px 20px 0;font:500 10px/1.2 var(--disp);font-stretch:110%;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.h3body{padding:24px 20px 0;max-width:640px}
+.hero3 h1{font-size:38px;font-weight:700;line-height:1.14;letter-spacing:-.045em;margin:0}
+.h3body p{margin:14px 0 22px;font-size:15px;line-height:1.6;color:rgba(255,255,255,.86);max-width:24em}
+.h3body .row{display:flex;flex-wrap:wrap;gap:8px}
+.h3word{position:absolute;left:0;right:0;bottom:-.14em;margin:0;text-align:center;font-family:var(--disp);font-stretch:125%;font-weight:600;font-size:calc((100vw - 48px)/5.75);line-height:1;letter-spacing:-.02em;color:#fff;pointer-events:none;white-space:nowrap}
+.cross{position:absolute;width:18px;height:18px;z-index:1;pointer-events:none;display:none}
+.cross::before,.cross::after{content:"";position:absolute;background:rgba(255,255,255,.7)}
+.cross::before{left:8px;top:0;width:1.5px;height:18px}.cross::after{top:8px;left:0;height:1.5px;width:18px}
+.cross.c1{left:16px;top:52px}.cross.c2{right:16px;top:52px}
+.h3card{display:none}
+.hero-info3{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;margin:0;padding:14px 4px 0;font-size:12px;color:var(--mut)}
+@media (min-width:768px){
+  .hero3{margin:12px 16px 0;border-radius:28px;min-height:640px;height:calc(100svh - 190px)}
+  .cross{display:block}
+  .h3top{font-size:12px;font-stretch:118%;letter-spacing:.08em}
+  .h3top{padding:28px 40px 0}
+  .h3body{padding:56px 40px 0}
+  .hero3 h1{font-size:60px}
+  .h3body p{font-size:17px}
+  .cross.c1{left:30px;top:70px}.cross.c2{right:30px;top:70px}
+  .h3word{font-size:calc((100vw - 112px)/5.75);bottom:-.16em}
+  .h3card{position:absolute;right:40px;top:96px;display:flex;align-items:center;gap:14px;width:300px;padding:10px 18px 10px 10px;border-radius:20px;background:rgba(250,249,247,.94);color:var(--ink);text-decoration:none;box-shadow:0 20px 50px rgba(0,0,0,.25);transition:transform .3s}
+  .h3card:hover{transform:translateY(-3px)}
+  .h3card img{width:76px;height:76px;border-radius:14px;object-fit:cover}
+  .h3card span{display:grid;gap:2px}
+  .h3card small{font-size:12px;color:var(--mut)}
+  .h3card b{font-size:15px;font-weight:600}
+  .h3card em{font-style:normal;font-size:14px;font-weight:600}
+}
+@media (min-width:1200px){
+  .hero3 h1{font-size:76px;line-height:1.06}
+  .h3body{padding:64px 56px 0}
+  .h3top{padding:30px 56px 0}
+  .h3card{right:56px;top:110px}
+}
+
+/* 소개: 두 가지 글자색 + 겹친 사진 */
+.intro3{padding-top:72px;padding-bottom:72px}
+.i3grid{display:grid;gap:48px}
+.i3big{margin:0;font-size:28px;font-weight:700;line-height:1.32;letter-spacing:-.04em;color:var(--ink)}
+.i3big span{color:var(--stone)}
+.i3sub{display:grid;gap:20px;justify-items:start;margin-top:28px;max-width:28em}
+.i3sub p{margin:0;color:var(--mut);font-size:15px}
+.stack{position:relative;padding:0 0 56px 0}
+.stack .s1{width:82%;margin-left:auto;aspect-ratio:4/5;object-fit:cover;border-radius:20px;filter:grayscale(1) contrast(1.08)}
+.stack .s2{position:absolute;left:0;bottom:0;width:48%;aspect-ratio:1;object-fit:cover;border-radius:16px;border:6px solid var(--bg);filter:grayscale(1) contrast(1.05) brightness(1.05)}
+.stamp{position:absolute;right:-6px;bottom:22px;width:104px;height:104px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-content:center;text-align:center;font-size:13px;line-height:1.1}
+.stamp b{font-family:var(--disp);font-stretch:125%;font-size:34px;font-weight:600;letter-spacing:-.02em}
+.stamp small{display:block;font-size:11px;opacity:.7;margin-top:4px}
+@media (min-width:1024px){
+  .intro3{padding-top:140px;padding-bottom:140px}
+  .i3grid{grid-template-columns:7fr 5fr;gap:96px;align-items:center}
+  .i3big{font-size:48px;line-height:1.24}
+  .i3sub{grid-template-columns:1fr auto;align-items:end;gap:32px;max-width:none;margin-top:48px}
+  .stamp{width:136px;height:136px;right:-24px;bottom:36px}
+  .stamp b{font-size:44px}
+}
+
+/* 한 번의 순환: 검정 띠 + 온도 도식 */
+.rit3{background:var(--char);color:#EDEBE6;margin:0 8px;border-radius:20px;padding:56px 0 48px;overflow:hidden}
+.r3head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px;margin-bottom:36px}
+.r3head h2{font-size:32px;font-weight:700;letter-spacing:-.04em;line-height:1.1}
+.r3head p{margin:0;font-size:13px;color:#A8A39A}
+.temp{position:relative;margin:0 0 40px;padding:34px 0 26px}
+.temp svg{display:block;width:100%;height:120px;overflow:visible}
+.temp .base{stroke:#3A3936;stroke-width:1;stroke-dasharray:3 5;vector-effect:non-scaling-stroke}
+.temp .area{fill:rgba(237,235,230,.06)}
+.temp .ln{fill:none;stroke:#EDEBE6;stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:2400;stroke-dashoffset:0;transition:stroke-dashoffset 1.8s cubic-bezier(.4,0,.2,1)}
+.temp circle{fill:#121211;stroke:#EDEBE6;stroke-width:2;vector-effect:non-scaling-stroke}
+.tl{position:absolute;font-size:12px;color:#A8A39A;display:flex;align-items:baseline;gap:6px}
+.tl b{font-family:var(--disp);font-stretch:112%;font-size:22px;font-weight:600;color:#EDEBE6}
+.tl.t1{left:0;top:0}.tl.t2{right:calc(52.4% + 12px);top:104px}.tl.t3{right:0;top:66px}
+.ticks{position:relative;height:16px;margin-top:8px;font-size:11px;color:#8C877F}
+.ticks span{position:absolute;left:0;top:0;transform:translateX(0)}
+.ticks span[style*="47"]{transform:translateX(-100%)}
+.r3cols{display:grid;gap:0;border-top:1px solid #34322F}
+.r3cols > div{padding:24px 0;border-bottom:1px solid #34322F;display:grid;grid-template-columns:148px 1fr;column-gap:16px;align-items:baseline}
+.r3cols > div:last-child{border-bottom:0}
+.bign{grid-row:span 2;margin:0;white-space:nowrap;font-family:var(--disp);font-stretch:125%;font-size:52px;font-weight:600;line-height:.9;letter-spacing:-.03em}
+.bign small{font-size:14px;font-weight:500;letter-spacing:.04em;margin-left:6px;color:#A8A39A}
+.r3cols h3{font-size:17px;font-weight:600;color:#fff}
+.r3cols p:not(.bign){margin:4px 0 0;font-size:14px;color:#A8A39A}
+@media (min-width:768px){
+  .rit3{margin:0 16px;border-radius:28px;padding:96px 0 80px}
+  .r3head h2{font-size:56px}
+  .temp svg{height:150px}
+  .tl.t2{top:132px}.tl.t3{top:86px}
+  .r3cols{grid-template-columns:repeat(3,1fr);border-bottom:0}
+  .r3cols > div{display:block;border-bottom:0;padding:32px 24px 0 0}
+  .r3cols > div + div{padding-left:24px;border-left:1px solid #34322F}
+  .bign{font-size:112px;margin-bottom:24px}
+  .tl b{font-size:28px}
+}
+
+/* 샵 / 공간 한 쌍 */
+.pair-wrap{margin-top:72px}
+.pc.light{background:var(--card)}
+@media (min-width:768px){ .pc.light .pc-f{grid-row:2;align-self:end} }
+.pc.dark{background:#1a1918;color:#fff;isolation:isolate}
+.pc.dark img{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;aspect-ratio:auto;z-index:-1;filter:grayscale(1) contrast(1.08) brightness(.7);transition:transform .6s}
+.pc.dark:hover img,.pc.light:hover img{transform:scale(1.03)}
+.pc.light img{transition:transform .6s}
+.pc.dark .pc-t,.pc.dark .pc-f{position:relative}
+.pc.dark p,.pc.dark .pc-f{opacity:.85}
+.pc h2{font-family:var(--font)}
+@media (min-width:768px){ .pc.dark{display:flex;min-height:520px} .pc.dark img{grid-row:auto;grid-column:auto} .pair-wrap{margin-top:120px} }
+
+/* 상품·공간·저널 다듬기 */
+.sec-head .h-lg{font-size:28px}
+@media (min-width:1024px){ .sec-head .h-lg{font-size:52px;letter-spacing:-.045em} }
+.prod{background:var(--card)}
+.prod.feat{background:var(--char)}
+.space-tease .pic .photo{filter:grayscale(1) contrast(1.06)}
+.circles span{background:var(--card);border-color:transparent}
+.circles .ci-ph.dark{background:var(--ink)!important;border-color:var(--ink)!important}
+
+.prod .chip.ok{background:var(--ink);color:#fff}.prod .chip.ok::before{background:#fff}
+.journal .jimg img{filter:grayscale(1) contrast(1.05);transition:filter .4s,transform .5s}
+.journal a:hover .jimg img{filter:none}
+/* 다른 화면 사진도 흑백 톤으로 통일 (상품 사진만 원래 색) */
+.ph-hero img,.split .pic .photo,.fac .fimg img,.dlg .pimg img{filter:grayscale(1) contrast(1.08)}
+/* 바닥 워드마크 */
+.ft{background:var(--char);color:#B5B0A7;overflow:hidden;padding-bottom:0}
+.ft-word{margin:40px 0 0;font-family:var(--disp);font-stretch:125%;font-weight:600;font-size:min(calc((100vw - 48px)/5.75),250px);line-height:.78;letter-spacing:-.02em;color:#EDEBE6;text-align:center;white-space:nowrap;transform:translateY(.06em)}
+
+/* 은은한 등장 (움직임 줄이기 설정이면 끔) */
+html.rv-on .rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+html.rv-on .rv.in{opacity:1;transform:none}
+html.rv-on .temp:not(.in) .ln{stroke-dashoffset:2400}
+@media (prefers-reduced-motion:reduce){ html.rv-on .rv{opacity:1;transform:none;transition:none} html.rv-on .temp .ln{stroke-dashoffset:0} }
 </style>
 </head>
 <body class="no-im">
@@ -585,56 +745,85 @@ body.has-mbar .toast{bottom:96px}
 <main>
 <!-- ============ 1 메인 ============ -->
 <section class="page" id="p-home" data-page="home" aria-label="메인">
-  <div class="hero">
-    <p class="im on-photo">섹션 배경 이미지(풀폭) + 텍스트·버튼 위젯. 모바일용 사진은 따로 지정</p>
-    <img src="https://images.unsplash.com/photo-1786799901347-e45b3e2d64ea?w=1800&q=72&auto=format&fit=crop" alt="창으로 숲이 보이는 나무 사우나 실내">
-    <div class="wrap">
+  <div class="hero3">
+    <p class="im on-photo">섹션 배경 이미지(흑백으로 보정해서 올림) + 텍스트·버튼 위젯. 모바일용 사진은 따로 지정</p>
+    <img class="h3img" src="https://images.unsplash.com/photo-1769011496342-2bd1ad232d8f?w=2000&q=72&auto=format&fit=crop" alt="김 서린 유리 너머 사우나 벤치에 앉아 쉬는 사람">
+    <i class="cross c1" aria-hidden="true"></i><i class="cross c2" aria-hidden="true"></i>
+    <div class="h3top">
+      <span>Sauna goods &amp; space</span>
+      <span class="h3dot">Seoul — Busan</span>
+    </div>
+    <div class="h3body">
       <h1>땀 내고, 식히고,<br>한숨 돌리고.</h1>
       <p>집에서 쓰는 사우나 타월과 로브, 그리고 부산에 준비 중인 작은 사우나 공간.</p>
       <div class="row">
         <a class="btn light" href="#space">공간 미리 보기</a>
-        <a class="tlink only-int" href="#shop">타월 보러 가기</a>
-        <a class="tlink only-ext ext-link" href="#">스토어 가기 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
+        <a class="btn ghost only-int" href="#shop">타월 보러 가기</a>
+        <a class="btn ghost only-ext ext-link" href="#">스토어 가기 <svg class="ico ico-s"><use href="#i-ext"/></svg></a>
       </div>
-      <p class="hero-info"><span>온라인 샵 · 평일 오후 2시 전 주문 당일 출고 (예시)</span><span>부산 공간 · 설계 중</span></p>
     </div>
+    <a class="h3card only-int" href="#product/waffle">
+      <img src="https://images.unsplash.com/photo-1760722974657-f64bce2f9cc5?w=300&q=70&auto=format&fit=crop" alt="">
+      <span><small>새로 나온 타월</small><b>와플 사우나 타월</b><em class="num">38,000원</em></span>
+    </a>
+    <p class="h3word" aria-hidden="true">HANSUM</p>
   </div>
+  <div class="wrap"><p class="hero-info3"><span>온라인 샵 · 평일 오후 2시 전 주문 당일 출고 (예시)</span><span>부산 공간 · 설계 중</span></p></div>
 
-  <div class="sec intro">
+  <div class="sec intro3">
     <div class="wrap">
-      <div class="marks">
-        <p class="im">텍스트 위젯(글자 크기 크게, 자간 넓게) + 모서리 '+'는 작은 이미지 4개. 지우기 쉬움</p>
-        <p class="wordmark" aria-hidden="true">HANSUM</p>
-        <div class="statement">
-          <p class="big">뜨거운 방에서 10분, 찬물에서 1분, 그리고 아무것도 하지 않는 10분. 한숨은 그 마지막 10분을 위한 물건과 공간을 만들어요.</p>
-          <div>
-            <p class="mut" style="margin:0 0 8px">2025년 서울에서 타월 한 장으로 시작했어요. 몸에 닿는 천과 쉬는 자리의 온도를 오래 고민해요.</p>
-            <a class="tlink" href="#brand">브랜드 이야기</a>
+      <p class="im">왼쪽 텍스트 위젯(두 가지 글자색) + 오른쪽 이미지 위젯. 겹친 사진 두 장과 동그라미는 한 장으로 합쳐 올려요</p>
+      <div class="i3grid">
+        <div class="i3text rv">
+          <p class="eyebrow">한숨에 대해</p>
+          <p class="i3big"><span>뜨거운 방에서 10분, 찬물에서 1분, 그리고 아무것도 하지 않는 10분.</span> 한숨은 그 마지막 10분을 위한 물건과 공간을 만들어요.</p>
+          <div class="i3sub">
+            <p>2025년 서울에서 타월 한 장으로 시작했어요. 몸에 닿는 천과 쉬는 자리의 온도를 오래 고민해요.</p>
+            <a class="btn line" href="#brand">브랜드 이야기</a>
           </div>
+        </div>
+        <div class="stack rv">
+          <img class="s1" src="https://images.unsplash.com/photo-1741601274134-fa98352f1c95?w=1100&q=72&auto=format&fit=crop" alt="달군 사우나 돌 위로 국자로 물을 붓는 모습">
+          <img class="s2" src="https://images.unsplash.com/photo-1786799966417-bead801334e7?w=700&q=72&auto=format&fit=crop" alt="사우나 벤치에 걸쳐 둔 격자무늬 타월">
+          <span class="stamp" aria-hidden="true"><b class="num">21</b>분<small>한 번의 순환</small></span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="wrap">
-    <p class="im">이미지 위젯 2개를 1:1 그리드로. 왼쪽 흰 바탕, 오른쪽 검정 바탕 (섹션 안 박스 배경색)</p>
-    <div class="pair">
-      <a class="pc light only-int" href="#shop"><div class="pc-t"><h2>샵</h2><p>타월 · 로브 · 사우나 햇</p></div><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=900&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"><span class="pc-f">집에서도 사우나처럼</span></a>
-      <a class="pc light only-ext ext-link" href="#"><div class="pc-t"><h2>스토어</h2><p>타월 · 로브 · 사우나 햇</p></div><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=900&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"><span class="pc-f">외부 스토어로 이동해요 <svg class="ico ico-s" style="vertical-align:-3px"><use href="#i-ext"/></svg></span></a>
-      <a class="pc dark" href="#space"><div class="pc-t"><h2>공간</h2><p>부산 · 준비 중</p></div><img src="https://images.unsplash.com/photo-1604609165742-58e1b9cf0457?w=900&q=72&auto=format&fit=crop" alt="물가 바위 위의 작은 나무 사우나"><span class="pc-f">설계 단계예요</span></a>
-    </div>
-  </div>
-
-  <div class="wrap" style="margin-top:12px">
-    <p class="im">텍스트 위젯 3열 그리드 (모바일 1열로 쌓임). 뒤의 큰 글자는 배경 이미지 한 장</p>
-    <div class="ritual-card">
-      <span class="wm" aria-hidden="true">10·1·10</span>
-      <div class="rc-head"><h2 class="h-md">한 번의 순환</h2><span class="small mut">시간은 일반적인 예시예요. 몸 상태에 맞게 줄여 주세요.</span></div>
-      <div class="ritual" aria-label="한 번의 순환">
-        <div><p class="n num">10<small>분</small></p><div><h3>덥히기</h3><p>80~90도 건식 사우나에서 땀이 날 때까지.</p></div></div>
-        <div><p class="n num">1<small>분</small></p><div><h3>식히기</h3><p>찬물이나 찬 샤워로 숨을 고르며.</p></div></div>
-        <div><p class="n num">10<small>분</small></p><div><h3>쉬기</h3><p>로브를 걸치고, 휴대폰은 내려두고.</p></div></div>
+  <section class="rit3" aria-labelledby="ritTitle">
+    <div class="wrap">
+      <p class="im">섹션 배경색 검정 + 텍스트 위젯 3열. 온도 그래프는 이미지 한 장</p>
+      <div class="r3head rv">
+        <h2 id="ritTitle">한 번의 순환</h2>
+        <p>시간과 온도는 일반적인 예시예요.<br>몸 상태에 맞게 줄여 주세요.</p>
       </div>
+      <figure class="temp rv" aria-label="순환 동안의 온도 변화 예시: 85도 10분, 15도 1분, 실온 24도 10분">
+        <svg viewBox="0 0 1200 190" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="0" x2="1200" y1="176" y2="176" class="base"/>
+          <path class="area" d="M0 34 H571 V150 H629 V128 H1200 V176 H0Z"/>
+          <path class="ln" d="M0 34 H571 V150 H629 V128 H1200"/>
+          <circle cx="571" cy="34" r="5"/><circle cx="629" cy="150" r="5"/><circle cx="1200" cy="128" r="5"/>
+        </svg>
+        <div class="tl t1"><b class="num">85°</b>사우나</div>
+        <div class="tl t2"><b class="num">15°</b>냉탕</div>
+        <div class="tl t3"><b class="num">24°</b>라운지</div>
+        <div class="ticks num" aria-hidden="true"><span>0</span><span style="left:47.6%">10</span><span style="left:52.4%">11</span><span style="right:0;left:auto">21분</span></div>
+      </figure>
+      <div class="r3cols">
+        <div class="rv"><p class="bign num"><span data-count="10">10</span><small>min</small></p><h3>덥히기</h3><p>80~90도 건식 사우나에서 땀이 날 때까지.</p></div>
+        <div class="rv"><p class="bign num"><span data-count="1">1</span><small>min</small></p><h3>식히기</h3><p>찬물이나 찬 샤워로 숨을 고르며.</p></div>
+        <div class="rv"><p class="bign num"><span data-count="10">10</span><small>min</small></p><h3>쉬기</h3><p>로브를 걸치고, 휴대폰은 내려두고.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap pair-wrap">
+    <p class="im">이미지 위젯 2개를 1:1 그리드로. 왼쪽 흰 박스, 오른쪽은 흑백 사진 위 글자</p>
+    <div class="pair">
+      <a class="pc light only-int rv" href="#shop"><div class="pc-t"><h2>샵</h2><p>타월 · 로브 · 사우나 햇</p></div><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=900&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"><span class="pc-f">집에서도 사우나처럼</span></a>
+      <a class="pc light only-ext ext-link rv" href="#"><div class="pc-t"><h2>스토어</h2><p>타월 · 로브 · 사우나 햇</p></div><img src="https://images.unsplash.com/photo-1650481093978-6cc58e4649f4?w=900&q=72&auto=format&fit=crop" alt="선반 위에 개어 둔 면 타월"><span class="pc-f">외부 스토어로 이동해요 <svg class="ico ico-s" style="vertical-align:-3px"><use href="#i-ext"/></svg></span></a>
+      <a class="pc dark rv" href="#space"><img src="https://images.unsplash.com/photo-1604609165742-58e1b9cf0457?w=1000&q=72&auto=format&fit=crop" alt="물가 바위 위의 작은 나무 사우나"><div class="pc-t"><h2>공간</h2><p>부산 · 준비 중</p></div><span class="pc-f">설계 단계예요</span></a>
     </div>
   </div>
 
@@ -945,19 +1134,22 @@ body.has-mbar .toast{bottom:96px}
     <p class="lead">Figma 원본과 함께 이 내용을 한 문서로 드려요. 개발자가 디자인 모드에서 그대로 옮길 수 있게 위젯 이름과 값으로 적어요.</p>
     <h2 class="h-md" style="margin-top:48px">색</h2>
     <div class="sw">
-      <div><i style="background:#F6F4F0;border-bottom:1px solid var(--line)"></i><p>바탕<br><code>#F6F4F0</code></p></div>
-      <div><i style="background:#1F1E1C"></i><p>글자·주요 버튼<br><code>#1F1E1C</code></p></div>
-      <div><i style="background:#6B675F"></i><p>보조 글자<br><code>#6B675F</code></p></div>
-      <div><i style="background:#24221F"></i><p>진한 카드<br><code>#24221F</code></p></div>
+      <div><i style="background:#EDEBE6;border-bottom:1px solid var(--line)"></i><p>바탕 (종이색)<br><code>#EDEBE6</code></p></div>
+      <div><i style="background:#121211"></i><p>먹색 · 글자·검정 띠<br><code>#121211</code></p></div>
+      <div><i style="background:#FAF9F7;border-bottom:1px solid var(--line)"></i><p>흰 카드<br><code>#FAF9F7</code></p></div>
+      <div><i style="background:#86817A"></i><p>돌색 · 큰 글자 앞부분<br><code>#86817A</code></p></div>
     </div>
     <h2 class="h-md">글자 크기 (PC / 모바일)</h2>
     <div class="type-scale" style="margin:16px 0 48px">
-      <div><code>제목 64 / 36</code><span style="font-size:36px;font-weight:700;letter-spacing:-.035em">한숨 부산</span></div>
-      <div><code>구역 제목 44 / 28</code><span style="font-size:28px;font-weight:700;letter-spacing:-.035em">쉬는 시간에 쓰는 것들</span></div>
-      <div><code>워드마크 200 / 58 (얇게, 자간 넓게)</code><span style="font-size:26px;font-weight:300;letter-spacing:.2em">HANSUM</span></div>
-      <div><code>본문 17 / 17</code><span style="font-size:17px">바다 가까운 골목에 사우나 두 칸</span></div>
-      <div><code>보조 13 / 13</code><span style="font-size:13px" class="mut">시간은 일반적인 예시예요</span></div>
+      <div><code>워드마크 화면 폭 꽉 / Archivo 넓은 폭 600</code><span style="font-family:var(--disp);font-stretch:125%;font-size:30px;font-weight:600">HANSUM</span></div>
+      <div><code>첫 화면 제목 76 / 38</code><span style="font-size:36px;font-weight:700;letter-spacing:-.045em">한숨 돌리고.</span></div>
+      <div><code>큰 숫자 112 / 52 (Archivo)</code><span style="font-family:var(--disp);font-stretch:125%;font-size:36px;font-weight:600">10<small style="font-size:13px"> min</small></span></div>
+      <div><code>구역 제목 56·52 / 32·28</code><span style="font-size:28px;font-weight:700;letter-spacing:-.04em">쉬는 시간에 쓰는 것들</span></div>
+      <div><code>소개 큰 글 48 / 28 (두 가지 색)</code><span style="font-size:22px;font-weight:700;letter-spacing:-.04em"><span style="color:#86817A">찬물에서 1분,</span> 그리고 쉬기</span></div>
+      <div><code>본문 17 / 15</code><span style="font-size:17px">바다 가까운 골목에 사우나 두 칸</span></div>
+      <div><code>보조 13 / 12</code><span style="font-size:13px" class="mut">시간과 온도는 일반적인 예시예요</span></div>
     </div>
+    <p class="small mut" style="margin:-32px 0 48px">모서리: 큰 구역 28 / 카드 24 / 사진 16~20 / 버튼 알약. 사진은 흑백(대비 조금 올림)으로 보정해서 올리고, 상품 사진만 원래 색. Archivo는 Google Fonts 글꼴이라 아임웹에서 웹폰트로 넣거나, 워드마크·큰 숫자만 이미지로 올려요 (방법 확인 필요).</p>
     <h2 class="h-md" style="margin-bottom:16px">화면별 구현 방법</h2>
     <table class="map">
       <thead><tr><th>화면</th><th>아임웹에서 만드는 방법</th><th>확인할 것</th></tr></thead>
@@ -990,6 +1182,7 @@ body.has-mbar .toast{bottom:96px}
     </div>
     <p class="credit">사진: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — Clay Banks, HUUM, Auroom Wellness, Atle Mo, Denis Gorbuleac, Polina Kuzovkova, HANVIN CHEONG, Anne Nygård, Taylor Mackenzie, Mads Leif Hansen, Florencia Simonini, MADEINEGYPT.CA, engin akyurt, Grace Anne Bobadilla, Anastase Maragos, Natalia Marcelewicz. 브랜드·상품·가격·후기는 모두 시안용 예시예요.</p>
   </div>
+  <p class="ft-word" aria-hidden="true">HANSUM</p>
 </footer>
 
 <div class="mbar" id="mbar"><span class="p num" id="mbarP">38,000원</span><button class="btn only-int" type="button" id="mbarBtn">장바구니 담기</button><a class="btn only-ext ext-link" href="#">스토어에서 구매 <svg class="ico ico-s"><use href="#i-ext"/></svg></a></div>
@@ -1203,6 +1396,16 @@ addEventListener('hashchange', route);
 document.body.classList.toggle('ext', mode==='ext');
 $$('[data-mode]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.mode===mode));
 updCount(); route();
+})();
+
+/* 3차: 스크롤 등장 + 숫자 세기 (움직임 줄이기 설정이면 끔) */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('rv-on');
+  const count = el => { const n=+el.dataset.count; if(n<2) return; let k=0; const t0=performance.now(); const step=t=>{ const p=Math.min(1,(t-t0)/900); el.textContent=Math.round(n*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); }; el.textContent='0'; requestAnimationFrame(step); };
+  const io = new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; e.target.classList.add('in'); e.target.querySelectorAll('[data-count]').forEach(count); io.unobserve(e.target); }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 })();
 </script>
 </body>
